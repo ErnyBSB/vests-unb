@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extrai o Anexo I (Quadro de vagas) do edital do Vestibular da UnB para Markdown.
+"""Extrai o Anexo I (Quadro de vagas) do edital do Vestibular da UnB.
 
 A extração é determinística: rodar duas vezes sobre o mesmo PDF produz um arquivo
 byte a byte idêntico. Nada de rede, nada de data de geração no arquivo de saída —
@@ -9,13 +9,19 @@ O edital imprime uma linha de Total por campus e um TOTAL (TODOS OS CURSOS) ao
 final. A extração é conferida contra esses números: se qualquer soma não fechar,
 o programa falha em vez de gravar dado errado com aparência de dado certo.
 
+Duas saídas a partir do mesmo PDF: o Markdown, para ler, e o JSON, para o
+aplicativo consumir. O PDF em `sources/` é a fonte única — nada é derivado do
+Markdown.
+
 Uso:
-    python3 codigo/extrai_anexo_i.py <edital.pdf> <saida.md>
+    python3 codigo/extrai_anexo_i.py <edital.pdf> <saida.md> [--json <saida.json>]
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -24,6 +30,29 @@ from pathlib import Path
 # As 12 colunas numéricas do Anexo I, na ordem em que o edital as imprime.
 # «EP» = Sistema de Cotas para Escolas Públicas.
 # «PPI» = pessoas que se autodeclararam pretas, pardas, indígenas ou quilombolas.
+# Os onze sistemas de ingresso, com os mesmos rótulos que `extrai_demanda.py`
+# usa para 2026 — é o que permite comparar as duas edições sem tradução.
+# O edital define os eixos nos itens 10.2.20.1 a 10.2.20.3: «grupo» é faixa de
+# renda, «nível» é a autodeclaração PPI, «condição» é deficiência.
+SISTEMAS = [
+    "Cotas Negras",
+    "Cotas Trans",
+    "EP ≤1SM PPI · Defic.",
+    "EP ≤1SM PPI · Geral",
+    "EP ≤1SM não-PPI · Defic.",
+    "EP ≤1SM não-PPI · Geral",
+    "EP >1SM PPI · Defic.",
+    "EP >1SM PPI · Geral",
+    "EP >1SM não-PPI · Defic.",
+    "EP >1SM não-PPI · Geral",
+    "Universal",
+]
+
+# Os quatro campi, com os mesmos nomes que 2026 usa. O Anexo I escreve
+# «Campus UnB Ceilândia (FCTS)»; o turno vem em campo separado.
+CAMPI = ["Darcy Ribeiro", "Ceilândia", "Gama", "Planaltina"]
+
+# Rótulos curtos das colunas, para o cabeçalho da tabela em Markdown.
 COLUNAS = [
     "Negros",
     "Trans",
@@ -357,12 +386,64 @@ def markdown(pdf: Path, secoes_lidas: list[dict], total_geral: list[int]) -> str
     return "\n".join(linhas)
 
 
-def main(argv: list[str]) -> int:
-    if len(argv) != 3:
-        print(f"uso: {argv[0]} <edital.pdf> <saida.md>", file=sys.stderr)
-        return 2
+def campus_e_turno(nome_secao: str) -> tuple[str, str]:
+    """«Campus UnB Planaltina (FUP) – Noturno» vira («Planaltina», «Noturno»)."""
+    turno = "Noturno" if "noturno" in nome_secao.lower() else "Diurno"
+    limpo = re.sub(r"\s*\(.*?\)", "", nome_secao)
+    for campus in CAMPI:
+        if campus.lower() in limpo.lower():
+            return campus, turno
+    raise ErroDeExtracao(f"campus não reconhecido em {nome_secao!r}")
 
-    pdf, saida = Path(argv[1]), Path(argv[2])
+
+def documento_json(pdf: Path, secoes_lidas: list[dict]) -> dict:
+    """O mesmo formato de dados/2026/demanda-2026.json, sem inscritos nem demanda.
+
+    O Anexo I é publicado antes das inscrições: existe oferta, não existe procura.
+    Inventar os dois campos com zero seria pior que omiti-los.
+    """
+    cursos = []
+    for secao in secoes_lidas:
+        campus, turno = campus_e_turno(secao["nome"])
+        for curso in secao["cursos"]:
+            cursos.append({
+                "grupo": curso["grupo"],
+                "curso": curso["curso"],
+                "campus": campus,
+                "turno": turno,
+                "vagas": curso["vagas"][-1],
+                "sistemas": [
+                    {"sistema": nome, "vagas": vagas}
+                    for nome, vagas in zip(SISTEMAS, curso["vagas"][:N_SISTEMAS])
+                ],
+            })
+    return {
+        "fonte": {
+            "descricao": (
+                "Anexo I (Quadro de vagas) do Edital nº 1 – Vestibular 2027, "
+                "de 25 de agosto de 2026 — UnB/Cebraspe"
+            ),
+            "arquivo": pdf.as_posix(),
+            "sha256": sha256(pdf),
+            "observacao": (
+                "Vagas ofertadas no segundo semestre letivo de 2027. Não há "
+                "inscritos: o quadro é publicado antes da abertura das inscrições."
+            ),
+            "gerado_por": "codigo/extrai_anexo_i.py",
+        },
+        "cursos": cursos,
+    }
+
+
+def main(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("pdf", type=Path, help="o edital em PDF")
+    parser.add_argument("saida", type=Path, help="o Markdown a gravar")
+    parser.add_argument("--json", type=Path, metavar="ARQUIVO", dest="saida_json",
+                        help="grava também o JSON que o aplicativo consome")
+    args = parser.parse_args(argv[1:])
+
+    pdf, saida = args.pdf, args.saida
     if not pdf.is_file():
         print(f"erro: PDF não encontrado: {pdf}", file=sys.stderr)
         return 2
@@ -381,6 +462,20 @@ def main(argv: list[str]) -> int:
 
     n_cursos = sum(len(s["cursos"]) for s in lidas)
     print(f"{saida}: {n_cursos} cursos em {len(lidas)} seções — totais conferem")
+
+    if args.saida_json:
+        try:
+            doc = documento_json(pdf, lidas)
+        except ErroDeExtracao as erro:
+            print(f"erro: {erro}", file=sys.stderr)
+            return 1
+        args.saida_json.parent.mkdir(parents=True, exist_ok=True)
+        args.saida_json.write_text(
+            json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        vagas = sum(c["vagas"] for c in doc["cursos"])
+        campi = len({c["campus"] for c in doc["cursos"]})
+        print(f"{args.saida_json}: {len(doc['cursos'])} cursos · {vagas} vagas · {campi} campi")
     return 0
 
 
