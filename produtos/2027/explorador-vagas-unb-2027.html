@@ -102,6 +102,15 @@
   .semvaga{font-size:11px;color:var(--ink-soft);margin:10px 0 0;line-height:1.5;}
   .hint{font-size:12px;color:var(--ink-soft);text-align:center;padding:40px 10px;line-height:1.6;}
 
+  details.legenda{margin-top:14px;border:1px solid var(--grid);border-radius:9px;background:var(--panel);}
+  details.legenda summary{cursor:pointer;padding:11px 15px;font-size:13px;color:var(--ink);}
+  details.legenda summary:focus-visible{outline:2px solid var(--verde);outline-offset:-2px;border-radius:9px;}
+  details.legenda .inner{padding:0 15px 15px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+  details.legenda table{border-collapse:collapse;width:100%;margin:10px 0 0;font-size:12px;}
+  details.legenda th,details.legenda td{padding:5px 9px;border-bottom:1px solid var(--grid);text-align:left;vertical-align:top;}
+  details.legenda thead th{font-family:var(--fonte-mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:500;}
+  details.legenda code{font-family:var(--fonte-mono);font-size:11px;color:var(--ink);white-space:nowrap;}
+
   details.grupos{margin-top:22px;border:1px solid var(--grid);border-radius:9px;background:var(--panel);}
   details.grupos summary{cursor:pointer;padding:11px 15px;font-size:13px;color:var(--ink);}
   details.grupos summary:focus-visible{outline:2px solid var(--verde);outline-offset:-2px;border-radius:9px;}
@@ -196,6 +205,37 @@
     </div>
   </div>
 
+
+  <details class="legenda">
+    <summary>O que significa cada categoria de vaga</summary>
+    <div class="inner">
+      <p>
+        Os rótulos do gráfico são abreviados para caber ao lado das barras. Passar o mouse
+        sobre uma barra mostra a frase inteira; abaixo está a tradução de cada termo,
+        conforme os itens 10.2.20.1 a 10.2.20.3 do edital.
+      </p>
+      <table>
+        <thead><tr><th>No gráfico</th><th>Significa</th></tr></thead>
+        <tbody>
+          <tr><td><code>EP</code></td><td>Sistema de Cotas para Escolas Públicas</td></tr>
+          <tr><td><code>≤1SM</code></td><td>renda familiar bruta até 1 salário mínimo por pessoa</td></tr>
+          <tr><td><code>&gt;1SM</code></td><td>renda familiar bruta acima de 1 salário mínimo por pessoa</td></tr>
+          <tr><td><code>PPI</code></td><td>autodeclarada preta, parda, indígena ou quilombola</td></tr>
+          <tr><td><code>não-PPI</code></td><td>não autodeclarada preta, parda, indígena ou quilombola</td></tr>
+          <tr><td><code>Defic.</code></td><td>vaga reservada a pessoa com deficiência</td></tr>
+          <tr><td><code>Geral</code></td><td>vaga das demais pessoas candidatas, dentro da mesma faixa</td></tr>
+          <tr><td><code>Cotas Negras</code></td><td>Sistema de Cotas para Pessoas Negras</td></tr>
+          <tr><td><code>Cotas Trans</code></td><td>Sistema de Cotas para Pessoas Trans</td></tr>
+          <tr><td><code>Universal</code></td><td>Sistema Universal, sem reserva de vagas</td></tr>
+        </tbody>
+      </table>
+      <p style="margin:10px 0 0">
+        As faixas de escola pública combinam três eixos — renda, autodeclaração e
+        deficiência —, o que dá oito subsistemas. Uma pessoa candidata concorre também a
+        todos os subsistemas menos restritivos que o seu.
+      </p>
+    </div>
+  </details>
   <details class="grupos">
     <summary>O que significa o grupo de prova, e por que ele muda suas chances</summary>
     <div class="inner">
@@ -255,7 +295,7 @@
 // capturados do relógio: os extratores em codigo/ são deterministas, e um carimbo
 // de data automático faria toda regeração aparecer como alteração no diff.
 // Alterar o explorador exige subir a versão no mesmo commit — ver o README.
-const APP = {versao:'1.00', quando:'ago/2026'};
+const APP = {versao:'1.01', quando:'ago/2026'};
 
 // A edição do vestibular e o mês do documento que originou os números.
 const DADOS = {edicao:'Vestibular 2027', quando:'ago/2026'};
@@ -385,6 +425,37 @@ function showDetail(c){
         neste curso, e por isso não aparece${vazias === 1 ? '' : 'm'} no gráfico.</p>` : ''}`;
 }
 
+// Os rótulos curtos são a chave de junção entre as edições e não mudam — eles
+// vivem no JSON e ligam a mesma faixa de cota em 2026 e em 2027. A frase inteira
+// é camada de interface: o eixo do gráfico continua estreito, e quem precisa do
+// significado tem o tooltip da barra e a legenda abaixo da lista.
+// Termos conforme os itens 10.2.20.1 a 10.2.20.3 do edital.
+const RENDA_ATE = 'renda familiar bruta até 1 salário mínimo por pessoa';
+const RENDA_ACIMA = 'renda familiar bruta acima de 1 salário mínimo por pessoa';
+const PPI = 'autodeclarada preta, parda, indígena ou quilombola';
+const NAO_PPI = 'não autodeclarada preta, parda, indígena ou quilombola';
+const COM_DEF = 'pessoa com deficiência';
+const SEM_DEF = 'demais pessoas candidatas';
+const EP = 'Escola pública';
+
+const EXPLICA = {
+  'Cotas Negras': 'Sistema de Cotas para Pessoas Negras',
+  'Cotas Trans': 'Sistema de Cotas para Pessoas Trans',
+  'EP ≤1SM PPI · Defic.':     `${EP} · ${RENDA_ATE} · ${PPI} · ${COM_DEF}`,
+  'EP ≤1SM PPI · Geral':      `${EP} · ${RENDA_ATE} · ${PPI} · ${SEM_DEF}`,
+  'EP ≤1SM não-PPI · Defic.': `${EP} · ${RENDA_ATE} · ${NAO_PPI} · ${COM_DEF}`,
+  'EP ≤1SM não-PPI · Geral':  `${EP} · ${RENDA_ATE} · ${NAO_PPI} · ${SEM_DEF}`,
+  'EP >1SM PPI · Defic.':     `${EP} · ${RENDA_ACIMA} · ${PPI} · ${COM_DEF}`,
+  'EP >1SM PPI · Geral':      `${EP} · ${RENDA_ACIMA} · ${PPI} · ${SEM_DEF}`,
+  'EP >1SM não-PPI · Defic.': `${EP} · ${RENDA_ACIMA} · ${NAO_PPI} · ${COM_DEF}`,
+  'EP >1SM não-PPI · Geral':  `${EP} · ${RENDA_ACIMA} · ${NAO_PPI} · ${SEM_DEF}`,
+  'Universal': 'Sistema Universal — sem reserva de vagas',
+};
+
+// Rótulo desconhecido devolve a si mesmo: a sigla aparece, em vez de a barra
+// ficar sem nome, e o defeito fica visível em vez de silencioso.
+const explica = s => EXPLICA[s] || s;
+
 // Escadinha 1 / 2 / 2,5 / 5 × 10^k, para o eixo cair em número redondo.
 function passoDaGrade(maximo, alvo){
   const bruto = maximo / alvo;
@@ -422,8 +493,8 @@ function graficoSVG(sist){
     const meio = y + ALTURA_BARRA / 2 + 3;
     const larg = Math.max(x(s.vagas) - L, 0);
     partes.push(
-      `<text class="rotulo" x="${L - 8}" y="${meio}" text-anchor="end">${esc(s.sistema)}</text>`,
-      `<g><title>${esc(s.sistema)}: ${s.vagas} ${s.vagas === 1 ? 'vaga' : 'vagas'}</title>`,
+      `<text class="rotulo" aria-hidden="true" x="${L - 8}" y="${meio}" text-anchor="end">${esc(s.sistema)}</text>`,
+      `<g><title>${esc(explica(s.sistema))} — ${s.vagas} ${s.vagas === 1 ? 'vaga' : 'vagas'}</title>`,
       barra(L, y, larg, ALTURA_BARRA, RAIO, COR_SISTEMA(s.sistema)),
       `</g>`,
       `<text class="valor" x="${L + larg + 5}" y="${meio}">${s.vagas}</text>`
