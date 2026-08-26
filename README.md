@@ -261,30 +261,6 @@ python3 codigo/extrai_demanda.py \
 dados/2026/demanda-2026.json: 99 cursos em 4 campi — totais conferem
 ```
 
-O `--confere-com` acrescenta a conferência mais forte disponível: confrontar o resultado
-com o vetor `CURSOS` que o explorador publica hoje.
-
-```sh
-python3 codigo/extrai_demanda.py \
-    sources/2026/tabela-demanda-vagas-2026.pdf \
-    dados/2026/demanda-2026.json \
-    --confere-com produtos/2026/explorador-concorrencia-unb-2026.html
-```
-
-```
-conferido com explorador-concorrencia-unb-2026.html: 99 cursos, todos os valores idênticos
-6 nome(s) diferem — o explorador publica versões encurtadas:
-  · publicado: Música (Bacharelado)
-    tabela:    Música (Bacharelado)*
-  ...
-```
-
-Valor divergente **aborta**: significa que uma das duas pontas está com o número errado.
-Nome divergente apenas **reporta**: o explorador foi montado com nomes encurtados à mão
-— «Música (Bacharelado)» sem o asterisco que marca exigência de habilidade específica,
-«Ciências Sociais (Bacharelado/Licenciatura)» no lugar do nome completo — e a extração
-devolve o que a tabela oficial escreve, sem reproduzir a abreviação.
-
 **Anexo I do edital de 2027** — o quadro de vagas:
 
 ```sh
