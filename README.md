@@ -132,16 +132,17 @@ O que ainda não existe:
 
 | Referência | Situação |
 |---|---|
-| explorador lendo o JSON | o app ainda carrega o vetor `CURSOS` embutido, não `dados/2026/` |
 | demanda de 2027 | só sai depois de encerradas as inscrições; o Anexo I traz vagas, não inscritos |
 | nota de corte por sistema | não consta na tabela de demanda; exigiria outra fonte |
 | edições anteriores a 2026 | a estrutura por ano comporta, nada foi modelado ainda |
 
 > [!NOTE]
-> O explorador continua servindo os números de um vetor embutido no HTML. Esse vetor e o
-> `dados/2026/demanda-2026.json` foram confrontados campo a campo e **têm valores
-> idênticos** — só os nomes de seis cursos diferem, porque o app usa versões encurtadas à
-> mão. Fazer o app ler o JSON é o próximo item do [roadmap](#roadmap).
+> O explorador **lê** `dados/2026/demanda-2026.json` desde a versão atual. O vetor
+> embutido saiu do HTML, que encolheu de 118 KB para 16 KB. Como efeito colateral, seis
+> cursos passaram a exibir o nome oficial completo em vez da abreviação que estava no
+> código — «Música (Bacharelado)*» com o asterisco que marca exigência de habilidade
+> específica, «Ciências Sociais» com as três habilitações, e as Engenharias do Gama com
+> as cinco.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -153,7 +154,7 @@ O que ainda não existe:
 O produto é um arquivo HTML único, sem build e sem dependências instaláveis. As
 bibliotecas entram por CDN, em tempo de carregamento da página.
 
-* [![HTML][html-shield]][html-url] — página única, dados embutidos, zero build
+* [![HTML][html-shield]][html-url] — página única, sem build; os dados vêm de `dados/`
 * [![ECharts][echarts-shield]][echarts-url] — 5.4.3, o gráfico de barras do painel de detalhe
 * [![D3][d3-shield]][d3-url] — 7.8.5, o *data join* da lista e as escalas log/linear
 * [![GitHub Pages][pages-shield]][pages-url] — publicação a partir de `main`, na raiz
@@ -172,8 +173,9 @@ bibliotecas entram por CDN, em tempo de carregamento da página.
 Para **usar** os produtos:
 
 * Um **navegador** moderno.
-* **Conexão com a internet** ao abrir o explorador — ECharts, D3 e as fontes vêm de CDN.
-  Sem rede, a página carrega a estrutura mas não desenha os gráficos.
+* **Conexão com a internet** ao abrir o explorador — as bibliotecas de gráfico e as
+  fontes vêm de CDN, e os dados vêm de `dados/2026/demanda-2026.json`. Sem rede, a página
+  carrega a estrutura mas fica sem dados e sem gráficos.
 
 Para **rodar a extração** em `codigo/`:
 
@@ -203,9 +205,16 @@ Para trabalhar no repositório:
    git clone https://github.com/ErnyBSB/vests-unb.git
    cd vests-unb
    ```
-2. Abra o produto direto do disco — o `file://` basta, não é preciso servidor
+2. Abra o produto direto do disco — o `file://` funciona, sem precisar de servidor
    ```sh
    xdg-open produtos/2026/explorador-concorrencia-unb-2026.html
+   ```
+   Nesse modo os dados vêm da **cópia publicada**, não do seu clone: o navegador bloqueia
+   `fetch` de caminho relativo em `file://`, então o app cai para a URL do GitHub Pages —
+   e diz isso, num aviso no rodapé. Para ver o JSON **do clone**, sirva a pasta por HTTP:
+   ```sh
+   python3 -m http.server 8000
+   xdg-open http://localhost:8000/produtos/2026/explorador-concorrencia-unb-2026.html
    ```
 3. Confira que os documentos-fonte vieram inteiros
    ```sh
@@ -437,8 +446,9 @@ PPI ou não-PPI, e vagas gerais ou de pessoa com deficiência.
 <a id="modelo-de-dados"></a>
 ## Modelo de dados
 
-O vetor `CURSOS`, embutido no HTML, tem um registro por **curso/turno** — a mesma
-graduação em dois turnos são dois registros, porque concorrem separadamente:
+`dados/2026/demanda-2026.json` traz um bloco `fonte`, com a procedência e o sha256 do
+PDF, e um vetor `cursos` com um registro por **curso/turno** — a mesma graduação em dois
+turnos são dois registros, porque concorrem separadamente:
 
 ```json
 {
@@ -565,7 +575,7 @@ de o README deixar de virar página inicial.
 - [x] **Extração versionada em `codigo/`** — primeiro caso: Anexo I do edital de 2027
     - [x] Conferência automática dos totais extraídos contra os impressos no PDF
     - [x] Estender à tabela de demanda de 2026 — `dados/2026/demanda-2026.json`
-- [ ] Fazer o explorador **ler** `dados/2026/demanda-2026.json` em vez do vetor embutido
+- [x] Fazer o explorador **ler** `dados/2026/demanda-2026.json` em vez do vetor embutido
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
