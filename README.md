@@ -72,6 +72,7 @@
       </ul>
     </li>
     <li><a href="#integridade-do-dado-fonte">Integridade do dado-fonte</a></li>
+    <li><a href="#por-que-file-precisa-de-rede">Por que <code>file://</code> precisa de rede</a></li>
     <li><a href="#publicação">Publicação</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contribuindo">Contribuindo</a></li>
@@ -175,8 +176,18 @@ Para **usar** os produtos:
 * Um **navegador** moderno.
 * **Conexão com a internet apenas para os dados.** O explorador não busca nada de
   terceiros: sem bibliotecas de CDN, sem fontes externas. Só o
-  `dados/2026/demanda-2026.json` — que vem do próprio clone quando a pasta é servida por
-  HTTP, e da cópia publicada quando a página é aberta por `file://`.
+  `dados/2026/demanda-2026.json`.
+
+  Onde ele busca esse arquivo depende de como a página foi aberta:
+
+  | Aberta assim | O dado vem de | Precisa de rede? |
+  |---|---|---|
+  | servida por HTTP — Pages ou servidor local | `dados/` do próprio clone | não, se o servidor for local |
+  | por `file://`, com duplo clique | a cópia publicada no GitHub Pages | **sim** |
+
+  **Abrir por `file://` exige rede**, portanto, e é assim de propósito — ver
+  [Por que `file://` precisa de rede](#por-que-file-precisa-de-rede). Para uso realmente
+  offline, sirva a pasta por HTTP.
 
 Para **rodar a extração** em `codigo/`:
 
@@ -210,9 +221,10 @@ Para trabalhar no repositório:
    ```sh
    xdg-open produtos/2026/explorador-concorrencia-unb-2026.html
    ```
-   Nesse modo os dados vêm da **cópia publicada**, não do seu clone: o navegador bloqueia
-   `fetch` de caminho relativo em `file://`, então o app cai para a URL do GitHub Pages —
-   e diz isso, num aviso no rodapé. Para ver o JSON **do clone**, sirva a pasta por HTTP:
+   Nesse modo os dados vêm da **cópia publicada**, não do seu clone, e portanto **é
+   preciso estar com rede** — o app avisa disso no rodapé, e a razão está em
+   [Por que `file://` precisa de rede](#por-que-file-precisa-de-rede). Para ver o JSON
+   **do clone**, ou para trabalhar offline, sirva a pasta por HTTP:
    ```sh
    python3 -m http.server 8000
    xdg-open http://localhost:8000/produtos/2026/explorador-concorrencia-unb-2026.html
@@ -544,6 +556,35 @@ for tomar decisão de inscrição deve conferir no edital.
 
 
 
+<!-- FILE:// -->
+<a id="por-que-file-precisa-de-rede"></a>
+## Por que `file://` precisa de rede
+
+O explorador não carrega biblioteca nem fonte de terceiros — só o próprio JSON. Mesmo
+assim, aberto com duplo clique ele busca esse JSON na **cópia publicada**, e portanto
+precisa de rede. Isso é uma decisão, não uma pendência.
+
+O navegador bloqueia `fetch` de caminho relativo na origem `file://`. Restam duas saídas,
+e a escolhida foi a segunda:
+
+| | O que faria | Por que não |
+|---|---|---|
+| **Embutir um instantâneo dos dados no HTML** | funcionaria offline em qualquer modo | o dado voltaria a viver duplicado no repositório, o HTML iria de 21 KB a ~117 KB, e `produtos/` deixaria de ser editável à mão. Trocar um número produziria diff de 96 KB |
+| **Buscar da cópia publicada, avisando** | é o que o app faz | `file://` exige rede — e o rodapé diz, num aviso, que os dados não vieram do seu clone |
+
+Uma terceira ideia aparece naturalmente e é pior que as duas: usar um instantâneo
+embutido como último recurso, depois de tentar as outras origens. Funcionaria offline
+**com dado possivelmente velho e ninguém sabendo**, porque o instantâneo envelheceria em
+silêncio a cada nova extração. É o mesmo princípio que rege os extratores em `codigo/`:
+**falhar visivelmente é melhor que acertar por acaso**.
+
+Para uso offline de verdade, sirva a pasta por HTTP — um comando, descrito em
+[Instalação](#instalação).
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
 <!-- PUBLICAÇÃO -->
 <a id="publicação"></a>
 ## Publicação
@@ -584,7 +625,6 @@ de o README deixar de virar página inicial.
     - [x] Remover o D3, reescrevendo escalas e lista em JavaScript puro (−273 KB)
     - [x] Remover o ECharts, desenhando o gráfico de detalhe em SVG (−1.001 KB)
     - [x] Trocar as fontes do Google por pilhas do sistema (−475 KB)
-- [ ] Funcionar de fato sem rede: por `file://`, o dado ainda vem da cópia publicada
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
