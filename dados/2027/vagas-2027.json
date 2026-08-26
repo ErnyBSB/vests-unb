@@ -1,0 +1,5576 @@
+{
+  "fonte": {
+    "descricao": "Anexo I (Quadro de vagas) do Edital nº 1 – Vestibular 2027, de 25 de agosto de 2026 — UnB/Cebraspe",
+    "arquivo": "sources/2027/edital_Unb_2027.pdf",
+    "sha256": "a5de74562ad34112c7ef96ca7708021bc2681d96b53d9cb5adbe3f597679f2a1",
+    "observacao": "Vagas ofertadas no segundo semestre letivo de 2027. Não há inscritos: o quadro é publicado antes da abertura das inscrições.",
+    "gerado_por": "codigo/extrai_anexo_i.py"
+  },
+  "cursos": [
+    {
+      "grupo": "I",
+      "curso": "Administração (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Agronomia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 20,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 8
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Arquitetura e Urbanismo (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Artes Cênicas (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 3,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 0
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Artes Cênicas (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 3,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 0
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Artes Visuais (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Artes Visuais (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Biblioteconomia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Biotecnologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Ciência da Computação (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciência Política (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Ciências Biológicas (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Contábeis (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 18,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 7
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Econômicas (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Sociais (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Sociais - Antropologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 17,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 6
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Comunicação Social - Audiovisual (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Comunicação Social - Publicidade e Propaganda (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Design (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 5,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 1
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Direito (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Educação Física Ciclo Básico (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 25,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 3
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 3
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 10
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Enfermagem (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Ambiental (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Civil (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia de Computação (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia de Redes de Comunicação (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Elétrica (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Florestal (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Mecânica (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Mecatrônica (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Química (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Estatística (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Farmácia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Filosofia (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Física (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 9,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Geofísica (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Geografia (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 9,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Geologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "História (Licenciatura/Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Inteligência Artificial (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Jornalismo (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Letras Tradução Francês (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 5,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 1
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Letras Tradução Inglês (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Letras Português do Brasil como Segunda Língua (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Francesa (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 4,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 1
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Francesa (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 3,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 0
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Inglesa (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Portuguesa (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Línguas Estrangeiras Aplicadas (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Matemática (Bacharelado/Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 9,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Medicina (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Medicina Veterinária (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Museologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Nutrição (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Odontologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Pedagogia (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 19,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 7
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Psicologia (Bacharelado/Licenciatura/Psicólogo)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Química (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Química Tecnológica (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Relações Internacionais (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Serviço Social (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Turismo (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Administração (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Arquitetura e Urbanismo (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Arquivologia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 11,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Artes Visuais (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 6,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Ambientais (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Ciências Biológicas (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Contábeis (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Computação (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 12,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Comunicação Organizacional (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Direito (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia de Produção (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Farmácia (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Filosofia (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Física (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Gestão de Agronegócio (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Gestão de Políticas Públicas (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "História (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Letras Tradução Espanhol (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua e Literatura Japonesa (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 7,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Espanhola e Literatura Espanhola e Hispano-Americana (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Língua Portuguesa (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Matemática (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Música (Licenciatura)*",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 7,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 2
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Pedagogia (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 11,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Química (Licenciatura)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 8,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Saúde Coletiva (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Serviço Social (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Teoria Crítica e História da Arte (Bacharelado)",
+      "campus": "Darcy Ribeiro",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Enfermagem (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Farmácia (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Fisioterapia (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Fonoaudiologia (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 9,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 0
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Saúde Coletiva (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 15,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Terapia Ocupacional (Bacharelado)",
+      "campus": "Ceilândia",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Eletrônica (Bacharelado)",
+      "campus": "Gama",
+      "turno": "Diurno",
+      "vagas": 14,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia de Energia (Bacharelado)",
+      "campus": "Gama",
+      "turno": "Diurno",
+      "vagas": 14,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia de Software (Bacharelado)",
+      "campus": "Gama",
+      "turno": "Diurno",
+      "vagas": 14,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Aeroespacial (Bacharelado)",
+      "campus": "Gama",
+      "turno": "Diurno",
+      "vagas": 14,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "II",
+      "curso": "Engenharia Automotiva (Bacharelado)",
+      "campus": "Gama",
+      "turno": "Diurno",
+      "vagas": 14,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 5
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Naturais (Licenciatura)",
+      "campus": "Planaltina",
+      "turno": "Diurno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Gestão do Agronegócio (Bacharelado)",
+      "campus": "Planaltina",
+      "turno": "Diurno",
+      "vagas": 13,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 2
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 4
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Ciências Naturais (Licenciatura)",
+      "campus": "Planaltina",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    },
+    {
+      "grupo": "I",
+      "curso": "Gestão Ambiental (Bacharelado)",
+      "campus": "Planaltina",
+      "turno": "Noturno",
+      "vagas": 10,
+      "sistemas": [
+        {
+          "sistema": "Cotas Negras",
+          "vagas": 1
+        },
+        {
+          "sistema": "Cotas Trans",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP ≤1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM PPI · Defic.",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM PPI · Geral",
+          "vagas": 1
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Defic.",
+          "vagas": 0
+        },
+        {
+          "sistema": "EP >1SM não-PPI · Geral",
+          "vagas": 0
+        },
+        {
+          "sistema": "Universal",
+          "vagas": 3
+        }
+      ]
+    }
+  ]
+}

@@ -261,17 +261,25 @@ python3 codigo/extrai_demanda.py \
 dados/2026/demanda-2026.json: 99 cursos em 4 campi — totais conferem
 ```
 
-**Anexo I do edital de 2027** — o quadro de vagas:
+**Anexo I do edital de 2027** — o quadro de vagas, em duas formas:
 
 ```sh
 python3 codigo/extrai_anexo_i.py \
     sources/2027/edital_Unb_2027.pdf \
-    dados/2027/anexo-i-quadro-de-vagas.md
+    dados/2027/anexo-i-quadro-de-vagas.md \
+    --json dados/2027/vagas-2027.json
 ```
 
 ```
 dados/2027/anexo-i-quadro-de-vagas.md: 105 cursos em 6 seções — totais conferem
+dados/2027/vagas-2027.json: 105 cursos · 1074 vagas · 4 campi
 ```
+
+O Markdown é para ler; o JSON é o que um aplicativo consome. Os dois saem do **mesmo
+PDF** — nada é derivado do Markdown. O JSON usa os mesmos nomes de campus e de sistema de
+ingresso que `dados/2026/demanda-2026.json`, para que as duas edições sejam comparáveis
+sem tradução. Não traz `inscritos` nem `demanda`: o quadro de vagas é publicado antes das
+inscrições, e inventar os campos com zero seria pior que omiti-los.
 
 As duas extrações são **determinísticas**: rodar duas vezes sobre o mesmo PDF produz um
 arquivo byte a byte idêntico — não há data de geração na saída, nem acesso à rede.
@@ -352,12 +360,13 @@ sources/<ano>/            Documentos oficiais em PDF — a fonte primária, pres
     edital_Unb_2027.pdf                     Edital nº 1 – Vestibular 2027
 codigo/                   Os scripts de extração
     extrai_demanda.py                       Tabela de demanda → JSON
-    extrai_anexo_i.py                       Anexo I do edital → Markdown
+    extrai_anexo_i.py                       Anexo I do edital → Markdown e JSON
 dados/<ano>/              Dado derivado, gerado por script — nunca editado à mão
   2026/
     demanda-2026.json                       Demanda e vagas, 99 cursos
   2027/
-    anexo-i-quadro-de-vagas.md              Quadro de vagas, 105 cursos
+    anexo-i-quadro-de-vagas.md              Quadro de vagas, 105 cursos — para ler
+    vagas-2027.json                         O mesmo quadro, para o app consumir
 produtos/<ano>/           Os aplicativos HTML gerados, um por edição
   2026/
     explorador-concorrencia-unb-2026.html   Explorador de concorrência
@@ -594,6 +603,9 @@ de o README deixar de virar página inicial.
     - [x] Conferência automática dos totais extraídos contra os impressos no PDF
     - [x] Estender à tabela de demanda de 2026 — `dados/2026/demanda-2026.json`
 - [x] Fazer o explorador **ler** `dados/2026/demanda-2026.json` em vez do vetor embutido
+- [ ] Explorador de vagas de 2027 — composição das vagas por sistema de ingresso
+    - [x] Anexo I também em JSON, no formato que 2026 já usa
+    - [ ] O aplicativo
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
