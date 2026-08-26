@@ -24,7 +24,9 @@
     transformados em aplicativos HTML que qualquer candidato abre no navegador.
     <br />
     <br />
-    <a href="https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html"><strong>Abrir o explorador de concorrência 2026 »</strong></a>
+    <a href="https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html"><strong>Explorador de concorrência 2026 »</strong></a>
+    &middot;
+    <a href="https://ernybsb.github.io/vests-unb/produtos/2027/explorador-vagas-unb-2027.html"><strong>Explorador de vagas 2027 »</strong></a>
     <br />
     <br />
     <a href="#os-dados">Os dados</a>
@@ -120,6 +122,8 @@ O que já existe:
 
 * **Explorador de concorrência 2026** — 99 cursos/turnos, 11 sistemas de ingresso,
   publicado no GitHub Pages;
+* **Explorador de vagas 2027** — 105 cursos, com a divisão das vagas de cada um entre os
+  sistemas de ingresso;
 * os **documentos oficiais** que originaram os dados, preservados como recebidos;
 * **extração da tabela de demanda de 2026** — os 99 cursos em JSON, com todos os valores
   conferidos contra o que o explorador publica hoje;
@@ -208,7 +212,9 @@ respondem, está pronto.
 ### Instalação
 
 Para só **usar**, não instale nada: abra
-[o explorador publicado](https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html).
+[o explorador de concorrência 2026](https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html)
+ou
+[o explorador de vagas 2027](https://ernybsb.github.io/vests-unb/produtos/2027/explorador-vagas-unb-2027.html).
 
 Para trabalhar no repositório:
 
@@ -367,9 +373,11 @@ dados/<ano>/              Dado derivado, gerado por script — nunca editado à 
   2027/
     anexo-i-quadro-de-vagas.md              Quadro de vagas, 105 cursos — para ler
     vagas-2027.json                         O mesmo quadro, para o app consumir
-produtos/<ano>/           Os aplicativos HTML gerados, um por edição
+produtos/<ano>/           Os aplicativos HTML, um por edição
   2026/
-    explorador-concorrencia-unb-2026.html   Explorador de concorrência
+    explorador-concorrencia-unb-2026.html   Concorrência: candidato por vaga
+  2027/
+    explorador-vagas-unb-2027.html          Vagas: quantas, e em qual sistema
 images/                   Imagens do repositório
 LICENSE                   The Unlicense — domínio público
 ```
@@ -603,9 +611,9 @@ de o README deixar de virar página inicial.
     - [x] Conferência automática dos totais extraídos contra os impressos no PDF
     - [x] Estender à tabela de demanda de 2026 — `dados/2026/demanda-2026.json`
 - [x] Fazer o explorador **ler** `dados/2026/demanda-2026.json` em vez do vetor embutido
-- [ ] Explorador de vagas de 2027 — composição das vagas por sistema de ingresso
+- [x] Explorador de vagas de 2027 — composição das vagas por sistema de ingresso
     - [x] Anexo I também em JSON, no formato que 2026 já usa
-    - [ ] O aplicativo
+    - [x] O aplicativo
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
