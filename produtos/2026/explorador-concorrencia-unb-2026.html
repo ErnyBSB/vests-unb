@@ -143,6 +143,11 @@
       conter erro de extração; confira no edital antes de decidir sua inscrição.
     </p>
     <p class="fonte">
+      <b>*</b> exige Certificação de Habilidade Específica ·
+      <b>**</b> entrada pela área básica das Engenharias do Gama (FCTE), com a opção
+      específica ao fim do ciclo básico.
+    </p>
+    <p class="fonte">
       Fonte:
       <a href="https://cdn.cebraspe.org.br/vestibulares/VESTUNB_26/arquivos/5E209CC58A5EAAE1E5E3CA2DFBB183EFFF3FF411D513947550BF7A77D8393426.pdf" target="_blank" rel="noopener">tabela de demanda e vagas do
       Vestibular 2026</a> (PDF) — Cebraspe / Universidade de Brasília.
@@ -242,7 +247,8 @@ function render(){
      .on('click', (e,d)=>{ state.sel=d.id; render(); showDetail(d); });
   all.select('.pos').text((d,i)=>i+1);
   all.select('.nome').html(d=>{
-    const nome = d.curso.replace(/\s*\((.*?)\)$/, ' <small>$1 · '+d.campus+' · '+d.turno+'</small>');
+    // o grau pode vir seguido do marcador de rodapé: «(Bacharelados)**»
+    const nome = d.curso.replace(/\s*\((.*?)\)(\**)\s*$/, ' <small>$1$2 · '+d.campus+' · '+d.turno+'</small>');
     return nome;
   });
   all.select('.bar')
