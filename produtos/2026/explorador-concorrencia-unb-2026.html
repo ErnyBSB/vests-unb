@@ -6,7 +6,6 @@
 <title>Explorador de Concorrência — Vestibular UnB 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
 <style>
   :root{
     --bg:#F4F6F5; --panel:#FFFFFF; --ink:#1A2B23; --ink-soft:#5C6E64;
@@ -68,7 +67,11 @@
   .dkpi{flex:1;min-width:80px;background:var(--bg);border-radius:8px;padding:8px 10px;}
   .dkpi .label{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);}
   .dkpi .value{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--verde);}
-  #detailChart{width:100%;height:340px;}
+  #detailChart svg{width:100%;height:auto;display:block;}
+  #detailChart .rotulo{font-family:'IBM Plex Sans',sans-serif;fill:var(--ink-soft);}
+  #detailChart .valor{font-family:'IBM Plex Mono',monospace;fill:var(--ink);}
+  #detailChart .grade{stroke:var(--grid);stroke-width:1;}
+  #detailChart .barra{cursor:default;}
   .hint{font-size:12px;color:var(--ink-soft);text-align:center;padding:40px 10px;}
 
   .site-footer{
@@ -182,7 +185,7 @@
 // capturados do relógio: os extratores em codigo/ são deterministas, e um carimbo
 // de data automático faria toda regeração aparecer como alteração no diff.
 // Alterar o explorador exige subir a versão no mesmo commit — ver o README.
-const APP = {versao:'2.01', quando:'ago/2026'};
+const APP = {versao:'2.02', quando:'ago/2026'};
 
 // A edição do vestibular e o mês da tabela que originou os números. É outro fato,
 // e mudá-lo é atualizar dado, não app: um explorador corrigido ontem sobre tabela
@@ -293,36 +296,81 @@ function linhaHTML(c, i, escala){
     + '</div>';
 }
 
-let detailChart = null;
+const COR_SISTEMA = s =>
+  s === 'Universal'        ? '#1F5673' :
+  s.startsWith('Cotas')    ? '#8E3B46' : '#2E8B74';
+
+// Escadinha 1 / 2 / 2,5 / 5 × 10^k, para o eixo cair em número redondo.
+function passoDaGrade(maximo, alvo){
+  const bruto = maximo / alvo;
+  const escala = Math.pow(10, Math.floor(Math.log10(bruto)));
+  const norm = bruto / escala;
+  return (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * escala;
+}
+
 function showDetail(c){
-  const panel = document.getElementById('detail');
-  panel.innerHTML = `
-    <h2>${c.curso}</h2>
-    <p class="sub">${c.campus} · ${c.turno} · Grupo ${c.grupo}</p>
+  const sist = c.sistemas.filter(s=>s.vagas>0 || s.inscritos>0);
+  document.getElementById('detail').innerHTML = `
+    <h2>${esc(c.curso)}</h2>
+    <p class="sub">${esc(c.campus)} · ${esc(c.turno)} · Grupo ${esc(c.grupo)}</p>
     <div class="dkpis">
       <div class="dkpi"><div class="label">Vagas</div><div class="value">${fmt(c.vagas)}</div></div>
       <div class="dkpi"><div class="label">Inscritos</div><div class="value">${fmt(c.inscritos)}</div></div>
       <div class="dkpi"><div class="label">Demanda</div><div class="value">${fmtD(c.demanda)}</div></div>
     </div>
-    <div id="detailChart"></div>`;
-  const sist = c.sistemas.filter(s=>s.vagas>0 || s.inscritos>0);
-  detailChart = echarts.init(document.getElementById('detailChart'));
-  detailChart.setOption({
-    grid:{left:150,right:56,top:8,bottom:24},
-    tooltip:{formatter:p=>{
-      const s=sist[sist.length-1-p.dataIndex];
-      return `<b>${s.sistema}</b><br>Vagas: ${s.vagas} · Inscritos: ${s.inscritos}<br>Demanda: ${fmtD(s.demanda)} cand/vaga`;}},
-    xAxis:{type:'value',splitLine:{lineStyle:{color:'#E1E7E3'}},axisLabel:{fontSize:9.5}},
-    yAxis:{type:'category',data:sist.map(s=>s.sistema).reverse(),
-      axisLabel:{fontSize:9.5,width:140,overflow:'truncate'}},
-    series:[{type:'bar',data:sist.map(s=>s.demanda).reverse(),
-      itemStyle:{color:p=>{
-        const s=sist[sist.length-1-p.dataIndex];
-        return s.sistema==='Universal' ? '#1F5673' : s.sistema.startsWith('Cotas') ? '#8E3B46' : '#2E8B74';
-      },borderRadius:[0,3,3,0]},
-      label:{show:true,position:'right',fontSize:9.5,fontFamily:'IBM Plex Mono',
-        formatter:p=>fmtD(p.value)}}]
+    <div id="detailChart">${graficoSVG(sist)}</div>`;
+}
+
+// Gráfico de barras horizontais em SVG, sem biblioteca. O viewBox tem largura
+// fixa e o SVG ocupa 100% do painel, então tudo escala junto e não é preciso
+// redesenhar no resize.
+function graficoSVG(sist){
+  if(!sist.length) return '';
+
+  const L = 136, R = 44, TOPO = 8, BASE = 22;   // margens, em unidades do viewBox
+  const W = 380, BANDA = 26, ALTURA_BARRA = 15, RAIO = 3;
+  const plot = W - L - R;
+  const H = TOPO + sist.length * BANDA + BASE;
+  const maxV = Math.max(...sist.map(s=>s.demanda), 0);
+  const passo = passoDaGrade(maxV || 1, 4);
+  const teto = Math.max(Math.ceil(maxV / passo) * passo, passo);
+  const x = v => L + (v / teto) * plot;
+
+  const partes = [`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Demanda por sistema de ingresso">`];
+
+  for(let v = 0; v <= teto + 1e-9; v += passo){
+    partes.push(`<line class="grade" x1="${x(v).toFixed(1)}" y1="${TOPO}" `
+      + `x2="${x(v).toFixed(1)}" y2="${TOPO + sist.length * BANDA}"/>`);
+    partes.push(`<text class="valor" x="${x(v).toFixed(1)}" y="${H - BASE + 14}" `
+      + `font-size="8" text-anchor="middle">${fmtD(v).replace(',00','')}</text>`);
+  }
+
+  sist.forEach((s, i)=>{
+    const y = TOPO + i * BANDA + (BANDA - ALTURA_BARRA) / 2;
+    const meio = y + ALTURA_BARRA / 2 + 3;
+    const larg = Math.max(x(s.demanda) - L, 0);
+    partes.push(
+      `<text class="rotulo" x="${L - 8}" y="${meio}" font-size="8.5" text-anchor="end">${esc(s.sistema)}</text>`,
+      `<g class="barra">`,
+      `<title>${esc(s.sistema)}\nVagas: ${s.vagas} · Inscritos: ${s.inscritos}\n`
+        + `Demanda: ${fmtD(s.demanda)} cand/vaga</title>`,
+      barra(L, y, larg, ALTURA_BARRA, RAIO, COR_SISTEMA(s.sistema)),
+      `</g>`,
+      `<text class="valor" x="${L + larg + 5}" y="${meio}" font-size="8.5">${fmtD(s.demanda)}</text>`
+    );
   });
+
+  partes.push('</svg>');
+  return partes.join('');
+}
+
+// Barra com os cantos direitos arredondados, como o gráfico sempre teve.
+// Barra mais estreita que o raio vira retângulo simples, senão o arco se dobra.
+function barra(x, y, w, h, r, cor){
+  if(w < r) return `<rect x="${x}" y="${y}" width="${w.toFixed(2)}" height="${h}" fill="${cor}"/>`;
+  const d = `M${x},${y} H${(x + w - r).toFixed(2)} A${r},${r} 0 0 1 ${(x + w).toFixed(2)},${y + r}`
+    + ` V${y + h - r} A${r},${r} 0 0 1 ${(x + w - r).toFixed(2)},${y + h} H${x} Z`;
+  return `<path d="${d}" fill="${cor}"/>`;
 }
 
 document.getElementById('busca').addEventListener('input', e=>{state.busca=e.target.value; render();});
@@ -342,7 +390,6 @@ document.getElementById('list').addEventListener('click', e=>{
   render();
   showDetail(CURSOS.find(c=>c.id===state.sel));
 });
-window.addEventListener('resize', ()=>detailChart && detailChart.resize());
 
 function avisaOrigemPublicada(){
   const nota = document.createElement('p');
