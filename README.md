@@ -261,9 +261,11 @@ números daquele ano. Nada é sobrescrito de uma edição para a outra.
 <a id="os-dados"></a>
 ## Os dados
 
-Vestibular Tradicional da UnB, edição **2026**, a partir da tabela de demanda publicada
-em dezembro de 2025 — portanto **inscrições encerradas**, números definitivos, antes da
-aplicação da prova.
+Vestibular Tradicional da UnB, edição **2026**, a partir da
+[tabela de demanda e vagas][tabela-oficial] publicada pelo Cebraspe em dezembro de 2025 —
+portanto **inscrições encerradas**, números definitivos, antes da aplicação da prova.
+A mesma tabela está preservada aqui em
+[`sources/2026/tabela-demanda-vagas-2026.pdf`](sources/2026/tabela-demanda-vagas-2026.pdf).
 
 | | |
 |---|---|
@@ -360,7 +362,31 @@ mudam e a comparação visual entre dois recortes continue válida.
 ## Integridade do dado-fonte
 
 Os PDFs em `sources/` **não são gerados aqui** — são baixados do Cebraspe/UnB e
-preservados como vieram. Duas regras seguem daí:
+preservados como vieram.
+
+Cada documento tem, por isso, dois endereços com papéis distintos: a **origem oficial**,
+que prova de onde o dado veio, e a **cópia preservada**, que prova o que foi efetivamente
+usado e continua acessível se o CDN mudar de endereço entre edições — provável, já que o
+nome do arquivo é um hash opaco.
+
+| | |
+|---|---|
+| Origem oficial | [tabela de demanda e vagas do Vestibular 2026][tabela-oficial] (Cebraspe) |
+| Cópia preservada | [`sources/2026/tabela-demanda-vagas-2026.pdf`](sources/2026/tabela-demanda-vagas-2026.pdf) |
+| sha256 (idêntico nos dois) | `e4768cf4d360ad4a888f54d089785995994c56460f729fb6b137aa7b087c5654` |
+| Conferido em | 26/08/2026 — `HTTP 200`, `application/pdf`, 516.051 bytes |
+
+Conferir por conta própria:
+
+```sh
+curl -sL 'https://cdn.cebraspe.org.br/vestibulares/VESTUNB_26/arquivos/5E209CC58A5EAAE1E5E3CA2DFBB183EFFF3FF411D513947550BF7A77D8393426.pdf' | sha256sum
+sha256sum sources/2026/tabela-demanda-vagas-2026.pdf
+```
+
+Os dois comandos devem devolver o mesmo hash. É isso que sustenta a afirmação de que a
+cópia deste repositório **é** o documento oficial, e não uma versão parecida dele.
+
+Duas regras seguem daí:
 
 1. **Não edite, não reexporte, não otimize os PDFs.** Eles são o único registro do que a
    banca publicou, e são o que permite conferir qualquer número do explorador. Um PDF
@@ -505,3 +531,4 @@ Link do projeto: [https://github.com/ErnyBSB/vests-unb](https://github.com/ErnyB
 [d3-shield]: https://img.shields.io/badge/D3-7.8.5-F9A03C?style=for-the-badge&logo=d3dotjs&logoColor=white
 [d3-url]: https://d3js.org
 [cursos-shield]: https://img.shields.io/badge/2026-99%20cursos%20%C2%B7%202.102%20vagas-1F5673?style=for-the-badge
+[tabela-oficial]: https://cdn.cebraspe.org.br/vestibulares/VESTUNB_26/arquivos/5E209CC58A5EAAE1E5E3CA2DFBB183EFFF3FF411D513947550BF7A77D8393426.pdf
