@@ -156,6 +156,7 @@ bibliotecas entram por CDN, em tempo de carregamento da página.
 * **JavaScript sem framework** — a lista, os filtros, as escalas log/linear e o gráfico
   de barras do painel de detalhe, tudo à mão
 * **SVG inline** — o gráfico, com `viewBox`, sem redesenhar no `resize`
+* **Tipografia do sistema** — pilhas de fallback, nenhuma fonte baixada
 * [![GitHub Pages][pages-shield]][pages-url] — publicação a partir de `main`, na raiz
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -172,9 +173,10 @@ bibliotecas entram por CDN, em tempo de carregamento da página.
 Para **usar** os produtos:
 
 * Um **navegador** moderno.
-* **Conexão com a internet** ao abrir o explorador — as bibliotecas de gráfico e as
-  fontes vêm de CDN, e os dados vêm de `dados/2026/demanda-2026.json`. Sem rede, a página
-  carrega a estrutura mas fica sem dados e sem gráficos.
+* **Conexão com a internet apenas para os dados.** O explorador não busca nada de
+  terceiros: sem bibliotecas de CDN, sem fontes externas. Só o
+  `dados/2026/demanda-2026.json` — que vem do próprio clone quando a pasta é servida por
+  HTTP, e da cópia publicada quando a página é aberta por `file://`.
 
 Para **rodar a extração** em `codigo/`:
 
@@ -578,10 +580,11 @@ de o README deixar de virar página inicial.
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
-- [ ] Funcionamento sem rede — o explorador ainda depende de terceiros em runtime
+- [x] **Zero dependências de terceiros** — o explorador não busca nada fora do projeto
     - [x] Remover o D3, reescrevendo escalas e lista em JavaScript puro (−273 KB)
     - [x] Remover o ECharts, desenhando o gráfico de detalhe em SVG (−1.001 KB)
-    - [ ] Resolver a dependência das fontes do Google (−475 KB)
+    - [x] Trocar as fontes do Google por pilhas do sistema (−475 KB)
+- [ ] Funcionar de fato sem rede: por `file://`, o dado ainda vem da cópia publicada
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -605,7 +608,7 @@ PDF oficial, abra uma *issue* apontando o curso, o sistema de ingresso e a pági
    do `<script>` de
    [`explorador-concorrencia-unb-2026.html`](produtos/2026/explorador-concorrencia-unb-2026.html):
    ```js
-   const APP = {versao:'2.02', quando:'ago/2026'};
+   const APP = {versao:'2.03', quando:'ago/2026'};
    ```
    Versão que se esquece de subir é pior que versão nenhuma, porque passa a mentir para
    quem abre a página por um link antigo. O mês é **declarado**, nunca capturado do
@@ -667,7 +670,6 @@ Link do projeto: [https://github.com/ErnyBSB/vests-unb](https://github.com/ErnyB
 
 * [Cebraspe](https://www.cebraspe.org.br) — organizador do Vestibular da UnB; os documentos-fonte
 * [Universidade de Brasília](https://www.unb.br) — a instituição, e a página oficial de acompanhamento do vestibular
-* [IBM Plex](https://www.ibm.com/plex/) e [Spectral](https://fonts.google.com/specimen/Spectral) — a tipografia
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template) — estrutura deste README
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
