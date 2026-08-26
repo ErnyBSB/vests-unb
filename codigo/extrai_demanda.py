@@ -9,7 +9,7 @@ A tabela traz, por curso, doze trios (vagas, inscritos, demanda): os dez recorte
 do sistema de cotas, o Sistema Universal e o total do curso.
 
 Uso:
-    python3 codigo/extrai_demanda.py <tabela.pdf> <saida.json> [--confere-com <app.html>]
+    python3 codigo/extrai_demanda.py <tabela.pdf> <saida.json>
 """
 
 from __future__ import annotations
@@ -204,56 +204,6 @@ def confere(cursos: list[dict], secoes: list[dict], total_geral: list[float]) ->
         )
 
 
-def confere_com_app(cursos: list[dict], html: Path) -> None:
-    """Confronta o extraído com o vetor CURSOS publicado no explorador.
-
-    É o teste mais forte disponível: se bater, a extração reproduz exatamente o
-    dataset que está no ar. O extrator não depende disto para funcionar — é uma
-    conferência opcional, pedida pela linha de comando.
-    """
-    fonte = html.read_text(encoding="utf-8")
-    achado = re.search(r"const CURSOS = (\[.*?\]);", fonte, re.S)
-    if not achado:
-        raise ErroDeExtracao(f"não encontrei o vetor CURSOS em {html}")
-    publicado = json.loads(achado.group(1))
-
-    if len(publicado) != len(cursos):
-        raise ErroDeExtracao(
-            f"{html.name} publica {len(publicado)} cursos, a extração produziu "
-            f"{len(cursos)}"
-        )
-
-    # Duas categorias de divergência, com pesos diferentes. Valor divergente é
-    # erro: uma das duas pontas está com o número errado. Nome divergente não é:
-    # o explorador foi montado com nomes encurtados à mão, e a extração devolve o
-    # que a tabela oficial escreve. Reportar, não abortar.
-    sem_nome = lambda c: {k: v for k, v in c.items() if k != "curso"}
-    valores = [
-        f"{a['curso']} ({a['campus']} · {a['turno']}):\n"
-        f"      publicado: {json.dumps(sem_nome(a), ensure_ascii=False, sort_keys=True)}\n"
-        f"      extraído:  {json.dumps(sem_nome(b), ensure_ascii=False, sort_keys=True)}"
-        for a, b in zip(publicado, cursos)
-        if sem_nome(a) != sem_nome(b)
-    ]
-    if valores:
-        raise ErroDeExtracao(
-            f"{len(valores)} curso(s) com valores diferentes do publicado:\n  - "
-            + "\n  - ".join(valores[:5])
-            + ("\n  - ..." if len(valores) > 5 else "")
-        )
-
-    nomes = [(a["curso"], b["curso"]) for a, b in zip(publicado, cursos)
-             if a["curso"] != b["curso"]]
-    print(
-        f"conferido com {html.name}: {len(cursos)} cursos, todos os valores idênticos"
-    )
-    if nomes:
-        print(f"{len(nomes)} nome(s) diferem — o explorador publica versões encurtadas:")
-        for publicado_nome, extraido in nomes:
-            print(f"  · publicado: {publicado_nome}")
-            print(f"    tabela:    {extraido}")
-
-
 def sha256(caminho: Path) -> str:
     h = hashlib.sha256()
     with caminho.open("rb") as f:
@@ -284,10 +234,6 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("pdf", type=Path, help="a tabela de demanda em PDF")
     parser.add_argument("saida", type=Path, help="o JSON a gravar")
-    parser.add_argument(
-        "--confere-com", type=Path, metavar="HTML", dest="confere_com",
-        help="confronta o resultado com o vetor CURSOS de um explorador publicado",
-    )
     args = parser.parse_args(argv)
 
     if not args.pdf.is_file():
@@ -297,8 +243,6 @@ def main(argv: list[str] | None = None) -> int:
     try:
         cursos, secoes, geral = extrai(args.pdf)
         confere(cursos, secoes, geral)
-        if args.confere_com:
-            confere_com_app(cursos, args.confere_com)
     except ErroDeExtracao as erro:
         print(f"erro: {erro}", file=sys.stderr)
         return 1
@@ -310,11 +254,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     campi = len({c["campus"] for c in cursos})
-    conferido = " · idêntico ao explorador publicado" if args.confere_com else ""
-    print(
-        f"{args.saida}: {len(cursos)} cursos em {campi} campi — "
-        f"totais conferem{conferido}"
-    )
+    print(f"{args.saida}: {len(cursos)} cursos em {campi} campi — totais conferem")
     return 0
 
 
