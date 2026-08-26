@@ -6,7 +6,6 @@
 [![Unlicense][licenca-shield]](#licença-e-uso-do-material)
 [![GitHub Pages][pages-shield]][pages-url]
 [![HTML][html-shield]][html-url]
-[![ECharts][echarts-shield]][echarts-url]
 [![Cursos][cursos-shield]](#os-dados)
 
 
@@ -154,8 +153,9 @@ O produto é um arquivo HTML único, sem build e sem dependências instaláveis.
 bibliotecas entram por CDN, em tempo de carregamento da página.
 
 * [![HTML][html-shield]][html-url] — página única, sem build; os dados vêm de `dados/`
-* [![ECharts][echarts-shield]][echarts-url] — 5.4.3, o gráfico de barras do painel de detalhe
-* **JavaScript sem framework** — a lista, os filtros e as escalas log/linear, à mão
+* **JavaScript sem framework** — a lista, os filtros, as escalas log/linear e o gráfico
+  de barras do painel de detalhe, tudo à mão
+* **SVG inline** — o gráfico, com `viewBox`, sem redesenhar no `resize`
 * [![GitHub Pages][pages-shield]][pages-url] — publicação a partir de `main`, na raiz
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -580,7 +580,7 @@ de o README deixar de virar página inicial.
 - [ ] Comparador de cursos lado a lado
 - [ ] Funcionamento sem rede — o explorador ainda depende de terceiros em runtime
     - [x] Remover o D3, reescrevendo escalas e lista em JavaScript puro (−273 KB)
-    - [ ] Remover o ECharts, desenhando o gráfico de detalhe em SVG (−1.001 KB)
+    - [x] Remover o ECharts, desenhando o gráfico de detalhe em SVG (−1.001 KB)
     - [ ] Resolver a dependência das fontes do Google (−475 KB)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -605,7 +605,7 @@ PDF oficial, abra uma *issue* apontando o curso, o sistema de ingresso e a pági
    do `<script>` de
    [`explorador-concorrencia-unb-2026.html`](produtos/2026/explorador-concorrencia-unb-2026.html):
    ```js
-   const APP = {versao:'2.01', quando:'ago/2026'};
+   const APP = {versao:'2.02', quando:'ago/2026'};
    ```
    Versão que se esquece de subir é pior que versão nenhuma, porque passa a mentir para
    quem abre a página por um link antigo. O mês é **declarado**, nunca capturado do
@@ -667,7 +667,6 @@ Link do projeto: [https://github.com/ErnyBSB/vests-unb](https://github.com/ErnyB
 
 * [Cebraspe](https://www.cebraspe.org.br) — organizador do Vestibular da UnB; os documentos-fonte
 * [Universidade de Brasília](https://www.unb.br) — a instituição, e a página oficial de acompanhamento do vestibular
-* [Apache ECharts](https://echarts.apache.org) — o gráfico do painel de detalhe
 * [IBM Plex](https://www.ibm.com/plex/) e [Spectral](https://fonts.google.com/specimen/Spectral) — a tipografia
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template) — estrutura deste README
 
@@ -681,7 +680,5 @@ Link do projeto: [https://github.com/ErnyBSB/vests-unb](https://github.com/ErnyB
 [pages-url]: https://ernybsb.github.io/vests-unb/
 [html-shield]: https://img.shields.io/badge/HTML5-p%C3%A1gina%20%C3%BAnica-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [html-url]: https://developer.mozilla.org/pt-BR/docs/Web/HTML
-[echarts-shield]: https://img.shields.io/badge/ECharts-5.4.3-AA344D?style=for-the-badge&logo=apacheecharts&logoColor=white
-[echarts-url]: https://echarts.apache.org
 [cursos-shield]: https://img.shields.io/badge/2026-99%20cursos%20%C2%B7%202.102%20vagas-1F5673?style=for-the-badge
 [tabela-oficial]: https://cdn.cebraspe.org.br/vestibulares/VESTUNB_26/arquivos/5E209CC58A5EAAE1E5E3CA2DFBB183EFFF3FF411D513947550BF7A77D8393426.pdf
