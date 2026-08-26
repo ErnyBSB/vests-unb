@@ -80,6 +80,11 @@
   .site-footer a:hover{border-bottom-color:var(--verde);}
   .site-footer p{margin:0 0 6px;}
   .site-footer .fonte{font-family:'IBM Plex Mono',monospace;font-size:10.5px;}
+  .site-footer .versao{
+    display:flex;gap:14px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;padding-top:8px;border-top:1px solid var(--grid);
+  }
+  .site-footer .versao b{color:var(--verde);font-weight:500;}
   .site-footer strong{color:var(--ink);font-weight:600;}
   .site-footer .origem{
     background:var(--hl);border-left:3px solid var(--ambar);
@@ -152,6 +157,10 @@
       <a href="https://cdn.cebraspe.org.br/vestibulares/VESTUNB_26/arquivos/5E209CC58A5EAAE1E5E3CA2DFBB183EFFF3FF411D513947550BF7A77D8393426.pdf" target="_blank" rel="noopener">tabela de demanda e vagas do
       Vestibular 2026</a> (PDF) — Cebraspe / Universidade de Brasília.
     </p>
+    <p class="versao">
+      <span>Explorador <b id="vApp"></b> · <span id="vQuando"></span></span>
+      <span>Dados: <span id="vDados"></span></span>
+    </p>
     <p>
       Dados, documentos-fonte e código em
       <a href="https://ernybsb.github.io/vests-unb/">ernybsb.github.io/vests-unb</a> ·
@@ -170,6 +179,17 @@
 //   2. a cópia publicada — necessária quando a página é aberta por file://, em
 //      que o navegador bloqueia fetch de caminho relativo. O Pages responde com
 //      access-control-allow-origin: *, então a busca absoluta passa.
+// Versão do aplicativo e o mês em que ela saiu. Ambos são DECLARADOS, nunca
+// capturados do relógio: os extratores em codigo/ são deterministas, e um carimbo
+// de data automático faria toda regeração aparecer como alteração no diff.
+// Alterar o explorador exige subir a versão no mesmo commit — ver o README.
+const APP = {versao:'2.00', quando:'ago/2026'};
+
+// A edição do vestibular e o mês da tabela que originou os números. É outro fato,
+// e mudá-lo é atualizar dado, não app: um explorador corrigido ontem sobre tabela
+// de dezembro não está «atualizado» no sentido que interessa a quem se inscreve.
+const DADOS = {edicao:'Vestibular 2026', quando:'dez/2025'};
+
 const FONTES = [
   {url:'../../dados/2026/demanda-2026.json', publicada:false},
   {url:'https://ernybsb.github.io/vests-unb/dados/2026/demanda-2026.json', publicada:true},
@@ -312,6 +332,10 @@ function avisaOrigemPublicada(){
     + 'por HTTP (<code>python3 -m http.server</code>).';
   document.querySelector('.site-footer').prepend(nota);
 }
+
+document.getElementById('vApp').textContent = 'v' + APP.versao;
+document.getElementById('vQuando').textContent = 'atualizado em ' + APP.quando;
+document.getElementById('vDados').textContent = DADOS.edicao + ', tabela de ' + DADOS.quando;
 
 document.getElementById('list').innerHTML =
   '<div class="empty">Carregando os dados…</div>';
