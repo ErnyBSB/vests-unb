@@ -57,7 +57,13 @@
         <li><a href="#instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#uso">Uso</a></li>
+    <li>
+      <a href="#uso">Uso</a>
+      <ul>
+        <li><a href="#rodar-a-extração">Rodar a extração</a></li>
+        <li><a href="#explorar-a-concorrência-de-2026">Explorar a concorrência de 2026</a></li>
+      </ul>
+    </li>
     <li><a href="#estrutura-do-repositório">Estrutura do repositório</a></li>
     <li><a href="#os-dados">Os dados</a></li>
     <li>
@@ -107,30 +113,33 @@ a decisão de quem se inscreve.
 <a id="estado-atual"></a>
 ### Estado atual
 
-O repositório está na **fase de produto publicado, pipeline pendente**. O explorador de
-2026 está pronto e no ar; a extração que gerou os números dele ainda não está versionada.
+O repositório está na **fase de produto publicado, pipeline nascendo**. O explorador de
+2026 está no ar, mas os números dele continuam embutidos no HTML; a primeira extração
+versionada é a de 2027, escrita antes de o dado virar produto.
 
 O que já existe:
 
 * **Explorador de concorrência 2026** — 99 cursos/turnos, 11 sistemas de ingresso,
   publicado no GitHub Pages;
-* os **três documentos oficiais** que originaram os dados, preservados como recebidos;
+* os **documentos oficiais** que originaram os dados, preservados como recebidos;
+* **extração do Anexo I do edital de 2027** — 105 cursos, conferida contra os totais
+  impressos no próprio edital;
 * publicação automática: todo push em `main` redeploya o site.
 
 O que ainda não existe:
 
 | Referência | Situação |
 |---|---|
-| `codigo/` | vazio — a extração do PDF para JSON foi feita fora do repositório |
-| dados como arquivo | o vetor `CURSOS` está embutido no HTML, não há `.json` separado |
-| edições anteriores a 2026 | a estrutura por ano já comporta, nada foi modelado ainda |
+| extração de 2026 | não versionada — o vetor `CURSOS` está embutido no HTML |
+| dados de 2026 como arquivo | não há `.json` separado que o explorador leia |
+| demanda de 2027 | só sai depois de encerradas as inscrições; o Anexo I traz vagas, não inscritos |
 | nota de corte por sistema | não consta na tabela de demanda; exigiria outra fonte |
 
 > [!IMPORTANT]
-> Enquanto `codigo/` estiver vazio, **o dataset não é reproduzível a partir deste
-> repositório**. Conferir um número significa abrir o PDF em
+> **O dataset de 2026 não é reproduzível a partir deste repositório.** Conferir um número
+> significa abrir o PDF em
 > [`sources/2026/tabela-demanda-vagas-2026.pdf`](sources/2026/tabela-demanda-vagas-2026.pdf)
-> e ler à mão. Resolver isso é o item um do [roadmap](#roadmap).
+> e ler à mão. O de 2027 já é: `make`-nada, um comando — ver [Uso](#uso).
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -158,11 +167,26 @@ bibliotecas entram por CDN, em tempo de carregamento da página.
 <a id="pré-requisitos"></a>
 ### Pré-requisitos
 
+Para **usar** os produtos:
+
 * Um **navegador** moderno.
 * **Conexão com a internet** ao abrir o explorador — ECharts, D3 e as fontes vêm de CDN.
   Sem rede, a página carrega a estrutura mas não desenha os gráficos.
 
-Nada mais. Não há runtime a instalar, nem ambiente virtual, nem `make`.
+Para **rodar a extração** em `codigo/`:
+
+* **Python 3.10+**, sem nenhuma dependência de terceiros — só a biblioteca padrão.
+  ```sh
+  python3 --version
+  ```
+* **`pdftotext`**, do poppler-utils — é ele que lê o PDF.
+  ```sh
+  sudo apt-get install poppler-utils   # Debian/Ubuntu
+  pdftotext -v
+  ```
+
+Não há ambiente virtual, `make`, nem arquivo de dependências: se `python3` e `pdftotext`
+respondem, está pronto.
 
 <a id="instalação"></a>
 ### Instalação
@@ -193,6 +217,42 @@ Para trabalhar no repositório:
 <!-- USO -->
 <a id="uso"></a>
 ## Uso
+
+<a id="rodar-a-extração"></a>
+### Rodar a extração
+
+O Anexo I do edital de 2027 (o quadro de vagas) sai do PDF em um comando:
+
+```sh
+python3 codigo/extrai_anexo_i.py \
+    sources/2027/edital_Unb_2027.pdf \
+    dados/2027/anexo-i-quadro-de-vagas.md
+```
+
+```
+dados/2027/anexo-i-quadro-de-vagas.md: 105 cursos em 6 seções — totais conferem
+```
+
+A extração é **determinística**: rodar duas vezes sobre o mesmo PDF produz um arquivo byte
+a byte idêntico — não há data de geração no arquivo de saída, nem acesso à rede. Confira
+por conta própria:
+
+```sh
+python3 codigo/extrai_anexo_i.py sources/2027/edital_Unb_2027.pdf /tmp/a.md
+python3 codigo/extrai_anexo_i.py sources/2027/edital_Unb_2027.pdf /tmp/b.md
+cmp /tmp/a.md /tmp/b.md && echo idênticos
+```
+
+> [!IMPORTANT]
+> O script **não confia em si mesmo**. O edital imprime o total de vagas de cada campus e
+> um total geral, e a extração é confrontada com esses números: a soma dos 11 sistemas tem
+> de dar o total de cada curso, a soma dos cursos tem de dar o total do campus, e a soma
+> dos campi tem de dar o total geral. Qualquer divergência **aborta a execução** em vez de
+> gravar o arquivo — uma coluna trocada produz dado errado com aparência de dado certo, e
+> esse é o erro que não se percebe lendo o resultado.
+
+<a id="explorar-a-concorrência-de-2026"></a>
+### Explorar a concorrência de 2026
 
 O explorador tem quatro controles, todos combináveis:
 
@@ -241,7 +301,13 @@ sources/<ano>/            Documentos oficiais em PDF — a fonte primária, pres
     tabela-demanda-vagas-2026.pdf           Demanda e vagas por curso e sistema
     2026_Boletim-informativo_VestUnB_v4.pdf Boletim informativo do vestibular
     Guia-do-Vestibular-2026_Tradicional.pdf Guia do Vestibular Tradicional
-codigo/                   Scripts de extração e tratamento — ainda vazio
+  2027/
+    edital_Unb_2027.pdf                     Edital nº 1 – Vestibular 2027
+codigo/                   Os scripts de extração
+    extrai_anexo_i.py                       Anexo I do edital → Markdown
+dados/<ano>/              Dado derivado, gerado por script — nunca editado à mão
+  2027/
+    anexo-i-quadro-de-vagas.md              Quadro de vagas, 105 cursos
 produtos/<ano>/           Os aplicativos HTML gerados, um por edição
   2026/
     explorador-concorrencia-unb-2026.html   Explorador de concorrência
@@ -252,6 +318,19 @@ LICENSE                   The Unlicense — domínio público
 A organização **por ano** é proposital: cada edição do vestibular entra como um diretório
 novo, e o produto de uma edição passada continua abrindo exatamente como estava, com os
 números daquele ano. Nada é sobrescrito de uma edição para a outra.
+
+Os quatro diretórios de primeiro nível têm papéis que não se misturam:
+
+| Diretório | Papel | Quem produz |
+|---|---|---|
+| `sources/` | documentos oficiais, intocados | a banca |
+| `codigo/` | a extração | este repositório |
+| `dados/` | dado derivado, regenerável | o script |
+| `produtos/` | os aplicativos HTML | este repositório |
+
+A fronteira que importa: **apagar `dados/` não deve perder nada** — basta rodar o script
+de novo sobre o PDF em `sources/`. Se um dia isso deixar de ser verdade, é sinal de que
+alguém editou dado derivado à mão.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -431,8 +510,9 @@ de o README deixar de virar página inicial.
 - [x] Documentos oficiais de 2026 preservados em `sources/`
 - [x] Explorador de concorrência 2026 — 99 cursos, 11 sistemas de ingresso
 - [x] Publicação no GitHub Pages
-- [ ] **Extração versionada em `codigo/`** — do PDF da tabela de demanda ao JSON
-    - [ ] Conferência automática: totais do JSON contra os totais impressos no PDF
+- [x] **Extração versionada em `codigo/`** — primeiro caso: Anexo I do edital de 2027
+    - [x] Conferência automática dos totais extraídos contra os impressos no PDF
+    - [ ] Estender à tabela de demanda de 2026, hoje embutida no HTML
 - [ ] Dados como arquivo próprio (`dados/2026/cursos.json`), lidos pelo HTML
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
