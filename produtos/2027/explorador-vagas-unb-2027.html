@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorador de Vagas — Vestibular UnB 2027</title>
+<style>
+  :root{
+    --bg:#F4F6F5; --panel:#FFFFFF; --ink:#1A2B23; --ink-soft:#5C6E64;
+    --grid:#E1E7E3; --verde:#00594C; --verde-claro:#2E8B74; --azul:#1F5673;
+    --ambar:#C98A3E; --vinho:#8E3B46; --hl:#EAF2EF; --aviso:#FBF3E6;
+
+    /* Nenhuma fonte é baixada: a página usa o que a máquina já tem. A ordem
+       cobre as três famílias de sistema — Apple, Windows e Linux — e termina
+       na categoria genérica, que o navegador sempre resolve.
+       A monoespaçada é a que mais importa: as colunas de números do explorador
+       só ficam alinhadas se todos os dígitos tiverem a mesma largura. */
+    --fonte-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',
+                 'Helvetica Neue',Arial,sans-serif;
+    --fonte-mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,
+                 'DejaVu Sans Mono','Liberation Mono',monospace;
+    --fonte-serif:Georgia,'Iowan Old Style','Liberation Serif',
+                  'Times New Roman',serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fonte-sans);}
+  .page{max-width:1060px;margin:0 auto;padding:36px 22px 80px;}
+  header{margin-bottom:16px;border-bottom:2px solid var(--verde);padding-bottom:18px;}
+  .eyebrow{font-family:var(--fonte-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);margin:0 0 8px;}
+  h1{font-family:var(--fonte-serif);font-weight:600;font-size:27px;margin:0 0 8px;}
+  .lede{color:var(--ink-soft);font-size:14px;line-height:1.55;max-width:720px;margin:0;}
+
+  /* O aviso do semestre precisa ser lido antes da primeira comparação errada
+     com 2026 — por isso fica aqui em cima, e não no rodapé. */
+  .aviso-semestre{
+    background:var(--aviso);border:1px solid #E8D5B0;border-left:3px solid var(--ambar);
+    border-radius:0 8px 8px 0;padding:11px 15px;margin:0 0 18px;
+    font-size:13px;line-height:1.55;color:var(--ink);
+  }
+  .aviso-semestre b{color:#8A5A16;}
+
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 12px;}
+  .controls input[type=text]{
+    flex:1;min-width:200px;padding:9px 14px;border:1px solid var(--grid);border-radius:8px;
+    font-family:var(--fonte-sans);font-size:14px;background:var(--panel);color:var(--ink);
+  }
+  .controls select{
+    padding:9px 10px;border:1px solid var(--grid);border-radius:8px;background:var(--panel);
+    font-family:var(--fonte-sans);font-size:13px;color:var(--ink);
+  }
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center;}
+  .chip{
+    font-size:12.5px;padding:6px 13px;border-radius:99px;border:1px solid var(--grid);
+    background:var(--panel);cursor:pointer;user-select:none;transition:all .15s;color:var(--ink-soft);
+  }
+  .chip:focus-visible{outline:2px solid var(--verde);outline-offset:2px;}
+  .chip.on{background:var(--verde);border-color:var(--verde);color:#fff;}
+  .chip.turno.on{background:var(--azul);border-color:var(--azul);}
+  .chip.grupo.on{background:var(--vinho);border-color:var(--vinho);}
+  .chips .sep{width:1px;height:20px;background:var(--grid);margin:0 2px;}
+
+  .kpibar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .kpi{background:var(--panel);border:1px solid var(--grid);border-radius:9px;padding:10px 16px;flex:1;min-width:130px;}
+  .kpi .label{font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;}
+  .kpi .value{font-family:var(--fonte-mono);font-size:19px;font-weight:500;color:var(--verde);margin-top:2px;}
+  .kpi.destaque .value{color:var(--azul);}
+
+  .layout{display:flex;gap:18px;align-items:flex-start;}
+  .list-panel{flex:1.35;background:var(--panel);border:1px solid var(--grid);border-radius:10px;padding:10px 8px;min-width:0;}
+  #list{max-height:640px;overflow-y:auto;}
+  .row{
+    display:grid;grid-template-columns:24px 200px 1fr 74px;gap:8px;align-items:center;
+    padding:6px 10px;border-radius:7px;cursor:pointer;transition:background .12s;
+  }
+  .row:hover{background:var(--hl);}
+  .row.sel{background:var(--hl);outline:2px solid var(--verde-claro);}
+  .row .pos{font-family:var(--fonte-mono);font-size:10.5px;color:var(--ink-soft);text-align:right;}
+  .row .nome{font-size:12.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;}
+  .row .nome small{display:block;color:var(--ink-soft);font-size:10.5px;}
+  /* A barra da lista é dividida: a parte azul são as vagas do Sistema Universal,
+     a verde são as reservadas. A largura total é proporcional às vagas do curso,
+     então a linha carrega magnitude e composição na mesma marca. */
+  .row .barwrap{height:16px;background:#EFF3F1;border-radius:4px;overflow:hidden;display:flex;}
+  .row .bar-u{height:100%;background:var(--azul);}
+  .row .bar-r{height:100%;background:var(--verde-claro);}
+  .row .val{font-family:var(--fonte-mono);font-size:11.5px;text-align:right;color:var(--ink);}
+  .row .val small{display:block;font-size:9.5px;color:var(--ink-soft);}
+  .empty{padding:30px;text-align:center;color:var(--ink-soft);font-size:13.5px;line-height:1.6;}
+
+  .detail-panel{flex:1;background:var(--panel);border:1px solid var(--grid);border-radius:10px;padding:20px;position:sticky;top:16px;min-width:0;}
+  .detail-panel h2{font-family:var(--fonte-serif);font-size:18px;margin:0 0 2px;}
+  .detail-panel .sub{font-size:12px;color:var(--ink-soft);margin:0 0 12px;}
+  .dkpis{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+  .dkpi{flex:1;min-width:80px;background:var(--bg);border-radius:8px;padding:8px 10px;}
+  .dkpi .label{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);}
+  .dkpi .value{font-family:var(--fonte-mono);font-size:16px;color:var(--verde);}
+  .dkpi.univ .value{color:var(--azul);}
+  #detailChart svg{width:100%;height:auto;display:block;}
+  #detailChart .rotulo{font-family:var(--fonte-sans);font-size:8.5px;fill:var(--ink-soft);}
+  #detailChart .valor{font-family:var(--fonte-mono);font-size:8.5px;fill:var(--ink);}
+  #detailChart .grade{stroke:var(--grid);stroke-width:1;}
+  .semvaga{font-size:11px;color:var(--ink-soft);margin:10px 0 0;line-height:1.5;}
+  .hint{font-size:12px;color:var(--ink-soft);text-align:center;padding:40px 10px;line-height:1.6;}
+
+  details.grupos{margin-top:22px;border:1px solid var(--grid);border-radius:9px;background:var(--panel);}
+  details.grupos summary{cursor:pointer;padding:11px 15px;font-size:13px;color:var(--ink);}
+  details.grupos summary:focus-visible{outline:2px solid var(--verde);outline-offset:-2px;border-radius:9px;}
+  details.grupos .inner{padding:0 15px 15px;font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+  details.grupos table{border-collapse:collapse;width:100%;margin:10px 0 0;font-size:12px;}
+  details.grupos th,details.grupos td{padding:5px 9px;border-bottom:1px solid var(--grid);text-align:left;}
+  details.grupos thead th{font-family:var(--fonte-mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);font-weight:500;}
+  details.grupos .n{text-align:right;font-family:var(--fonte-mono);}
+  details.grupos .peso{color:var(--ink);font-weight:600;}
+
+  .site-footer{
+    margin-top:26px;padding-top:16px;border-top:1px solid var(--grid);
+    font-size:11.5px;line-height:1.6;color:var(--ink-soft);
+  }
+  .site-footer a{color:var(--verde);text-decoration:none;border-bottom:1px solid var(--grid);}
+  .site-footer a:hover{border-bottom-color:var(--verde);}
+  .site-footer p{margin:0 0 6px;}
+  .site-footer .fonte{font-family:var(--fonte-mono);font-size:10.5px;}
+  .site-footer strong{color:var(--ink);font-weight:600;}
+  .site-footer .origem{
+    background:var(--hl);border-left:3px solid var(--ambar);
+    padding:8px 12px;border-radius:0 6px 6px 0;margin-bottom:10px;
+  }
+  .site-footer .origem code{font-family:var(--fonte-mono);font-size:10.5px;}
+  .site-footer .versao{
+    display:flex;gap:14px;flex-wrap:wrap;font-family:var(--fonte-mono);
+    font-size:10.5px;padding-top:8px;border-top:1px solid var(--grid);
+  }
+  .site-footer .versao b{color:var(--verde);font-weight:500;}
+
+  @media (max-width:820px){
+    .layout{flex-direction:column;}
+    .detail-panel{position:static;width:100%;}
+    .row{grid-template-columns:20px 132px 1fr 66px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <p class="eyebrow">Cebraspe · Universidade de Brasília · Vestibular 2027</p>
+    <h1>Explorador de vagas — quantas existem, e quantas existem para você</h1>
+    <p class="lede">
+      Os 105 cursos/turnos do quadro de vagas do edital, ordenáveis e filtráveis. Clique
+      em qualquer curso para ver como as vagas dele se dividem entre os sistemas de
+      ingresso.
+    </p>
+  </header>
+
+  <p class="aviso-semestre">
+    <b>Este vestibular preenche vagas do segundo semestre letivo de 2027.</b>
+    O de 2026 preencheu o primeiro — são entradas diferentes, não uma série anual. Por
+    isso são 1.074 vagas contra 2.102: entre os cursos que existem nos dois anos, a
+    mediana é de exatamente metade. Comparar os dois totais como se fossem o mesmo
+    vestibular leva à conclusão errada.
+  </p>
+
+  <div class="controls">
+    <input type="text" id="busca" placeholder="Buscar curso… (ex: engenharia, direito, música)">
+    <select id="ordem" aria-label="Ordenação">
+      <option value="vagas_desc">Vagas ↓ (mais vagas)</option>
+      <option value="vagas_asc">Vagas ↑ (menos vagas)</option>
+      <option value="univ_asc">% no Universal ↑ (menos vagas livres)</option>
+      <option value="univ_desc">% no Universal ↓</option>
+      <option value="alfa">Ordem alfabética</option>
+    </select>
+  </div>
+  <div class="chips" id="chips">
+    <span class="chip campus on" data-tipo="campus" data-v="Darcy Ribeiro" role="checkbox" aria-checked="true" tabindex="0">Darcy Ribeiro</span>
+    <span class="chip campus on" data-tipo="campus" data-v="Ceilândia" role="checkbox" aria-checked="true" tabindex="0">Ceilândia</span>
+    <span class="chip campus on" data-tipo="campus" data-v="Gama" role="checkbox" aria-checked="true" tabindex="0">Gama</span>
+    <span class="chip campus on" data-tipo="campus" data-v="Planaltina" role="checkbox" aria-checked="true" tabindex="0">Planaltina</span>
+    <span class="sep"></span>
+    <span class="chip turno on" data-tipo="turno" data-v="Diurno" role="checkbox" aria-checked="true" tabindex="0">Diurno</span>
+    <span class="chip turno on" data-tipo="turno" data-v="Noturno" role="checkbox" aria-checked="true" tabindex="0">Noturno</span>
+    <span class="sep"></span>
+    <span class="chip grupo on" data-tipo="grupo" data-v="I" role="checkbox" aria-checked="true" tabindex="0">Grupo I</span>
+    <span class="chip grupo on" data-tipo="grupo" data-v="II" role="checkbox" aria-checked="true" tabindex="0">Grupo II</span>
+  </div>
+
+  <div class="kpibar">
+    <div class="kpi"><div class="label">Cursos exibidos</div><div class="value" id="kN">—</div></div>
+    <div class="kpi"><div class="label">Vagas</div><div class="value" id="kV">—</div></div>
+    <div class="kpi destaque"><div class="label">No Universal</div><div class="value" id="kU">—</div></div>
+    <div class="kpi destaque"><div class="label">% no Universal</div><div class="value" id="kP">—</div></div>
+  </div>
+
+  <div class="layout">
+    <div class="list-panel"><div id="list"></div></div>
+    <div class="detail-panel" id="detail">
+      <div class="hint">← Clique num curso para ver a divisão<br>das vagas por sistema de ingresso.</div>
+    </div>
+  </div>
+
+  <details class="grupos">
+    <summary>O que significa o grupo de prova, e por que ele muda suas chances</summary>
+    <div class="inner">
+      <p>
+        O edital não classifica os cursos por área. Classifica por <strong>grupo de
+        prova</strong>, que define o peso de cada prova no argumento final — e isso importa
+        mais que área, porque responde «sou melhor em exatas, quais cursos me favorecem».
+      </p>
+      <table>
+        <thead>
+          <tr><th>Grupo</th><th class="n">Cursos</th><th class="n">Prova I<br>Inglês</th><th class="n">Prova II<br>Humanas</th><th class="n">Prova III<br>Exatas e Bio</th><th class="n">Redação</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Grupo I</td><td class="n" id="gI">—</td><td class="n">2,0</td><td class="n peso">6,0</td><td class="n">5,0</td><td class="n">1,5</td></tr>
+          <tr><td>Grupo II</td><td class="n" id="gII">—</td><td class="n">1,0</td><td class="n">4,0</td><td class="n peso">8,0</td><td class="n">1,5</td></tr>
+        </tbody>
+      </table>
+      <p style="margin:10px 0 0">
+        Prova I: Língua Inglesa. Prova II: Língua Portuguesa e Literaturas, Geografia,
+        História, Artes, Filosofia e Sociologia. Prova III: Biologia, Física, Química e
+        Matemática.
+      </p>
+    </div>
+  </details>
+
+  <footer class="site-footer">
+    <p>
+      <strong>Os editais do Vestibular são a norma da seleção</strong>, não este
+      aplicativo. Os números apresentados aqui foram extraídos de documento oficial e podem
+      conter erro de extração; confira no edital antes de decidir sua inscrição.
+    </p>
+    <p class="fonte">
+      <b>*</b> exige Certificação de Habilidade Específica.
+    </p>
+    <p class="fonte">
+      Fonte: Edital nº 1 – Vestibular 2027, de 25 de agosto de 2026, Anexo I — Cebraspe /
+      Universidade de Brasília
+      (<a href="https://ernybsb.github.io/vests-unb/sources/2027/edital_Unb_2027.pdf" target="_blank" rel="noopener">PDF,
+      cópia preservada no projeto</a>).
+    </p>
+    <p>
+      Dados, documentos-fonte e código em
+      <a href="https://ernybsb.github.io/vests-unb/">ernybsb.github.io/vests-unb</a> ·
+      domínio público
+      (<a href="https://github.com/ErnyBSB/vests-unb/blob/main/LICENSE">The Unlicense</a>) ·
+      projeto independente, sem vínculo com a UnB ou com o Cebraspe.
+    </p>
+    <p class="versao">
+      <span>Explorador <b id="vApp"></b> · <span id="vQuando"></span></span>
+      <span>Dados: <span id="vDados"></span></span>
+    </p>
+  </footer>
+</div>
+
+<script>
+// Versão do aplicativo e o mês em que ela saiu. Ambos são DECLARADOS, nunca
+// capturados do relógio: os extratores em codigo/ são deterministas, e um carimbo
+// de data automático faria toda regeração aparecer como alteração no diff.
+// Alterar o explorador exige subir a versão no mesmo commit — ver o README.
+const APP = {versao:'1.00', quando:'ago/2026'};
+
+// A edição do vestibular e o mês do documento que originou os números.
+const DADOS = {edicao:'Vestibular 2027', quando:'ago/2026'};
+
+// Os dados vêm de dados/2027/vagas-2027.json, extraído do PDF oficial por
+// codigo/extrai_anexo_i.py. Duas origens, tentadas nesta ordem:
+//   1. o caminho relativo — vale quando a página é servida por HTTP, no GitHub
+//      Pages ou num servidor local, e é o que reflete o clone em que se trabalha;
+//   2. a cópia publicada — necessária quando a página é aberta por file://, em
+//      que o navegador bloqueia fetch de caminho relativo. O Pages responde com
+//      access-control-allow-origin: *, então a busca absoluta passa.
+const FONTES = [
+  {url:'../../dados/2027/vagas-2027.json', publicada:false},
+  {url:'https://ernybsb.github.io/vests-unb/dados/2027/vagas-2027.json', publicada:true},
+];
+
+let CURSOS = [];
+
+async function carregaCursos(){
+  const falhas = [];
+  for(const fonte of FONTES){
+    try{
+      const resposta = await fetch(fonte.url);
+      if(!resposta.ok){ falhas.push(`${fonte.url}: HTTP ${resposta.status}`); continue; }
+      const doc = await resposta.json();
+      if(!Array.isArray(doc.cursos) || !doc.cursos.length){
+        falhas.push(`${fonte.url}: sem cursos no JSON`); continue;
+      }
+      return {cursos:doc.cursos, publicada:fonte.publicada};
+    }catch(erro){
+      falhas.push(`${fonte.url}: ${erro.message}`);
+    }
+  }
+  throw new Error(falhas.join(' · '));
+}
+
+const state = {
+  busca:'', ordem:'vagas_desc', sel:null,
+  campus:new Set(['Darcy Ribeiro','Ceilândia','Gama','Planaltina']),
+  turno:new Set(['Diurno','Noturno']),
+  grupo:new Set(['I','II']),
+};
+
+const fmt = n => n.toLocaleString('pt-BR');
+const pct = n => (n*100).toFixed(1).replace('.',',') + '%';
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const esc = s => String(s).replace(/[&<>"]/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const universal = c => (c.sistemas.find(s => s.sistema === 'Universal') || {vagas:0}).vagas;
+const fracaoUniversal = c => c.vagas ? universal(c) / c.vagas : 0;
+
+// Cor por natureza do sistema, igual à do explorador de concorrência de 2026.
+const COR_SISTEMA = s =>
+  s === 'Universal'     ? '#1F5673' :
+  s.startsWith('Cotas') ? '#8E3B46' : '#2E8B74';
+
+function filtrados(){
+  const out = CURSOS.filter(c =>
+    state.campus.has(c.campus) && state.turno.has(c.turno) && state.grupo.has(c.grupo) &&
+    (!state.busca || norm(c.curso).includes(norm(state.busca))));
+  const s = state.ordem;
+  out.sort((a,b) =>
+    s === 'vagas_desc' ? b.vagas - a.vagas || a.curso.localeCompare(b.curso,'pt-BR') :
+    s === 'vagas_asc'  ? a.vagas - b.vagas || a.curso.localeCompare(b.curso,'pt-BR') :
+    s === 'univ_asc'   ? fracaoUniversal(a) - fracaoUniversal(b) || a.curso.localeCompare(b.curso,'pt-BR') :
+    s === 'univ_desc'  ? fracaoUniversal(b) - fracaoUniversal(a) || a.curso.localeCompare(b.curso,'pt-BR') :
+    a.curso.localeCompare(b.curso,'pt-BR'));
+  return out;
+}
+
+function render(){
+  const data = filtrados();
+  const vagas = data.reduce((s,c) => s + c.vagas, 0);
+  const univ = data.reduce((s,c) => s + universal(c), 0);
+
+  document.getElementById('kN').textContent = data.length;
+  document.getElementById('kV').textContent = fmt(vagas);
+  document.getElementById('kU').textContent = fmt(univ);
+  document.getElementById('kP').textContent = vagas ? pct(univ/vagas) : '—';
+
+  const maxV = Math.max(...CURSOS.map(c => c.vagas), 1);
+  const lista = document.getElementById('list');
+
+  // A lista é reconstruída inteira a cada render — 105 linhas no pior caso. O
+  // scroll precisa ser preservado à mão, senão clicar numa linha lá embaixo
+  // jogaria a lista de volta ao topo.
+  const scroll = lista.scrollTop;
+  lista.innerHTML = data.length
+    ? data.map((c,i) => linhaHTML(c,i,maxV)).join('')
+    : '<div class="empty">Nenhum curso encontrado com esses filtros.</div>';
+  lista.scrollTop = scroll;
+}
+
+function linhaHTML(c, i, maxV){
+  // o grau pode vir seguido do marcador de rodapé: «(Licenciatura)*»
+  const nome = esc(c.curso).replace(/\s*\((.*?)\)(\**)\s*$/,
+    ' <small>$1$2 · '+esc(c.campus)+' · '+esc(c.turno)+'</small>');
+  const largura = Math.max((c.vagas / maxV) * 100, 2);
+  const fracao = fracaoUniversal(c);
+  return '<div class="row'+(c.id===state.sel?' sel':'')+'" data-id="'+c.id+'">'
+    + '<div class="pos">'+(i+1)+'</div>'
+    + '<div class="nome">'+nome+'</div>'
+    + '<div class="barwrap" title="'+universal(c)+' no Universal · '
+    + (c.vagas-universal(c))+' reservadas">'
+    + '<div class="bar-u" style="width:'+(largura*fracao)+'%"></div>'
+    + '<div class="bar-r" style="width:'+(largura*(1-fracao))+'%"></div>'
+    + '</div>'
+    + '<div class="val">'+c.vagas+'<small>'+pct(fracao)+' univ.</small></div>'
+    + '</div>';
+}
+
+function showDetail(c){
+  const sist = c.sistemas.filter(s => s.vagas > 0);
+  const vazias = c.sistemas.length - sist.length;
+  document.getElementById('detail').innerHTML = `
+    <h2>${esc(c.curso)}</h2>
+    <p class="sub">${esc(c.campus)} · ${esc(c.turno)} · Grupo ${esc(c.grupo)}</p>
+    <div class="dkpis">
+      <div class="dkpi"><div class="label">Vagas</div><div class="value">${c.vagas}</div></div>
+      <div class="dkpi univ"><div class="label">Universal</div><div class="value">${universal(c)}</div></div>
+      <div class="dkpi"><div class="label">Reservadas</div><div class="value">${c.vagas - universal(c)}</div></div>
+    </div>
+    <div id="detailChart">${graficoSVG(sist)}</div>
+    ${vazias ? `<p class="semvaga">${vazias} ${vazias === 1
+        ? 'sistema de ingresso não oferta vaga' : 'sistemas de ingresso não ofertam vagas'}
+        neste curso, e por isso não aparece${vazias === 1 ? '' : 'm'} no gráfico.</p>` : ''}`;
+}
+
+// Escadinha 1 / 2 / 2,5 / 5 × 10^k, para o eixo cair em número redondo.
+function passoDaGrade(maximo, alvo){
+  const bruto = maximo / alvo;
+  const escala = Math.pow(10, Math.floor(Math.log10(bruto)));
+  const norm = bruto / escala;
+  return (norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 2.5 ? 2.5 : norm <= 5 ? 5 : 10) * escala;
+}
+
+// Gráfico de barras horizontais em SVG, sem biblioteca. O viewBox tem largura
+// fixa e o SVG ocupa 100% do painel, então tudo escala junto e não é preciso
+// redesenhar no resize.
+function graficoSVG(sist){
+  if(!sist.length) return '<p class="semvaga">Este curso não oferta vagas.</p>';
+
+  const L = 136, R = 34, TOPO = 8, BASE = 22;
+  const W = 380, BANDA = 26, ALTURA_BARRA = 15, RAIO = 3;
+  const plot = W - L - R;
+  const H = TOPO + sist.length * BANDA + BASE;
+  const maxV = Math.max(...sist.map(s => s.vagas), 1);
+  const passo = Math.max(1, Math.round(passoDaGrade(maxV, 4)));
+  const teto = Math.max(Math.ceil(maxV / passo) * passo, passo);
+  const x = v => L + (v / teto) * plot;
+
+  const partes = [`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vagas por sistema de ingresso">`];
+
+  for(let v = 0; v <= teto; v += passo){
+    partes.push(`<line class="grade" x1="${x(v).toFixed(1)}" y1="${TOPO}" `
+      + `x2="${x(v).toFixed(1)}" y2="${TOPO + sist.length * BANDA}"/>`);
+    partes.push(`<text class="valor" x="${x(v).toFixed(1)}" y="${H - BASE + 14}" `
+      + `font-size="8" text-anchor="middle">${v}</text>`);
+  }
+
+  sist.forEach((s, i) => {
+    const y = TOPO + i * BANDA + (BANDA - ALTURA_BARRA) / 2;
+    const meio = y + ALTURA_BARRA / 2 + 3;
+    const larg = Math.max(x(s.vagas) - L, 0);
+    partes.push(
+      `<text class="rotulo" x="${L - 8}" y="${meio}" text-anchor="end">${esc(s.sistema)}</text>`,
+      `<g><title>${esc(s.sistema)}: ${s.vagas} ${s.vagas === 1 ? 'vaga' : 'vagas'}</title>`,
+      barra(L, y, larg, ALTURA_BARRA, RAIO, COR_SISTEMA(s.sistema)),
+      `</g>`,
+      `<text class="valor" x="${L + larg + 5}" y="${meio}">${s.vagas}</text>`
+    );
+  });
+
+  partes.push('</svg>');
+  return partes.join('');
+}
+
+// Barra com os cantos direitos arredondados. Barra mais estreita que o raio
+// vira retângulo simples, senão o arco se dobra sobre si.
+function barra(x, y, w, h, r, cor){
+  if(w < r) return `<rect x="${x}" y="${y}" width="${w.toFixed(2)}" height="${h}" fill="${cor}"/>`;
+  const d = `M${x},${y} H${(x + w - r).toFixed(2)} A${r},${r} 0 0 1 ${(x + w).toFixed(2)},${y + r}`
+    + ` V${y + h - r} A${r},${r} 0 0 1 ${(x + w - r).toFixed(2)},${y + h} H${x} Z`;
+  return `<path d="${d}" fill="${cor}"/>`;
+}
+
+document.getElementById('busca').addEventListener('input', e => {state.busca = e.target.value; render();});
+document.getElementById('ordem').addEventListener('change', e => {state.ordem = e.target.value; render();});
+
+function alternaChip(ch){
+  const conjunto = state[ch.dataset.tipo];
+  const v = ch.dataset.v;
+  conjunto.has(v) ? conjunto.delete(v) : conjunto.add(v);
+  ch.classList.toggle('on');
+  ch.setAttribute('aria-checked', ch.classList.contains('on'));
+  render();
+}
+document.querySelectorAll('.chip').forEach(ch => {
+  ch.addEventListener('click', () => alternaChip(ch));
+  ch.addEventListener('keydown', e => {
+    if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); alternaChip(ch); }
+  });
+});
+
+document.getElementById('list').addEventListener('click', e => {
+  const linha = e.target.closest('.row');
+  if(!linha) return;
+  state.sel = Number(linha.dataset.id);
+  render();
+  showDetail(CURSOS.find(c => c.id === state.sel));
+});
+
+function avisaOrigemPublicada(){
+  const nota = document.createElement('p');
+  nota.className = 'origem';
+  nota.innerHTML = 'Página aberta como arquivo local: os dados vieram da '
+    + '<a href="https://ernybsb.github.io/vests-unb/dados/2027/vagas-2027.json">'
+    + 'cópia publicada</a>, não do seu clone. Para ver o JSON local, sirva a pasta '
+    + 'por HTTP (<code>python3 -m http.server</code>).';
+  document.querySelector('.site-footer').prepend(nota);
+}
+
+document.getElementById('vApp').textContent = 'v' + APP.versao;
+document.getElementById('vQuando').textContent = 'atualizado em ' + APP.quando;
+document.getElementById('vDados').textContent = DADOS.edicao + ', edital de ' + DADOS.quando;
+
+document.getElementById('list').innerHTML =
+  '<div class="empty">Carregando os dados…</div>';
+
+carregaCursos().then(({cursos, publicada}) => {
+  CURSOS = cursos;
+  CURSOS.forEach((c,i) => c.id = i);
+  document.getElementById('gI').textContent = CURSOS.filter(c => c.grupo === 'I').length;
+  document.getElementById('gII').textContent = CURSOS.filter(c => c.grupo === 'II').length;
+  if(publicada) avisaOrigemPublicada();
+  render();
+}).catch(erro => {
+  document.getElementById('list').innerHTML =
+    '<div class="empty"><b>Não foi possível carregar os dados.</b><br>'
+    + 'Verifique sua conexão e recarregue a página.<br>'
+    + '<small>' + erro.message.replace(/</g,'&lt;') + '</small></div>';
+});
+</script>
+</body>
+</html>
