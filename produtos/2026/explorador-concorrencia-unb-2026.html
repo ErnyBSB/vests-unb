@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
   :root{
     --bg:#F4F6F5; --panel:#FFFFFF; --ink:#1A2B23; --ink-soft:#5C6E64;
@@ -183,7 +182,7 @@
 // capturados do relógio: os extratores em codigo/ são deterministas, e um carimbo
 // de data automático faria toda regeração aparecer como alteração no diff.
 // Alterar o explorador exige subir a versão no mesmo commit — ver o README.
-const APP = {versao:'2.00', quando:'ago/2026'};
+const APP = {versao:'2.01', quando:'ago/2026'};
 
 // A edição do vestibular e o mês da tabela que originou os números. É outro fato,
 // e mudá-lo é atualizar dado, não app: um explorador corrigido ontem sobre tabela
@@ -225,6 +224,23 @@ const fmt = n => n.toLocaleString('pt-BR');
 const fmtD = n => n.toFixed(2).replace('.',',');
 const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const campusColor = {'Darcy Ribeiro':'#00594C','Ceilândia':'#1F5673','Gama':'#C98A3E','Planaltina':'#8E3B46'};
+const esc = s => String(s).replace(/[&<>"]/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// A demanda vai de 0,07 a 208,95 — quase quatro ordens de grandeza. Na escala
+// linear, Medicina consome a largura inteira e os outros 98 cursos viram traços
+// contra a margem; daí a logarítmica ser o padrão. O domínio é fixo, e não
+// recalculado por filtro, para que a comparação visual entre dois recortes
+// continue valendo.
+function escalaDemanda(){
+  const maxD = Math.max(...CURSOS.map(c=>c.demanda));
+  if(!state.log) return v => (v / maxD) * 100;
+  const piso = Math.log(0.07), teto = Math.log(maxD);
+  return v => {
+    const t = (Math.log(v) - piso) / (teto - piso);   // v=0 dá -Infinity
+    return Math.min(100, Math.max(2, 2 + t * 98));    // ...que o clamp resolve
+  };
+}
 
 function filtrados(){
   let out = CURSOS.filter(c =>
@@ -249,34 +265,32 @@ function render(){
   document.getElementById('kV').textContent = fmt(v);
   document.getElementById('kD').textContent = v ? fmtD(data.reduce((s,c)=>s+c.inscritos,0)/v) : '—';
 
-  const maxD = d3.max(CURSOS, c=>c.demanda);
-  const scale = state.log
-    ? d3.scaleLog().domain([0.07, maxD]).range([2,100]).clamp(true)
-    : d3.scaleLinear().domain([0, maxD]).range([0,100]);
+  const escala = escalaDemanda();
+  const lista = document.getElementById('list');
 
-  const rows = d3.select('#list').selectAll('.row').data(data, d=>d.id);
-  rows.exit().remove();
-  const enter = rows.enter().append('div').attr('class','row');
-  enter.append('div').attr('class','pos');
-  enter.append('div').attr('class','nome');
-  enter.append('div').attr('class','barwrap').append('div').attr('class','bar');
-  enter.append('div').attr('class','val');
+  // A lista é reconstruída inteira a cada render. São 99 linhas no pior caso, e
+  // reconstruir é mais simples de ler do que um ciclo enter/exit/merge — mas o
+  // scroll precisa ser preservado à mão, senão clicar numa linha lá embaixo
+  // jogaria a lista de volta ao topo.
+  const scroll = lista.scrollTop;
+  lista.innerHTML = data.length
+    ? data.map((c,i)=>linhaHTML(c,i,escala)).join('')
+    : '<div class="empty">Nenhum curso encontrado com esses filtros.</div>';
+  lista.scrollTop = scroll;
+}
 
-  const all = enter.merge(rows).order();
-  all.classed('sel', d=>d.id===state.sel)
-     .on('click', (e,d)=>{ state.sel=d.id; render(); showDetail(d); });
-  all.select('.pos').text((d,i)=>i+1);
-  all.select('.nome').html(d=>{
-    // o grau pode vir seguido do marcador de rodapé: «(Bacharelados)**»
-    const nome = d.curso.replace(/\s*\((.*?)\)(\**)\s*$/, ' <small>$1$2 · '+d.campus+' · '+d.turno+'</small>');
-    return nome;
-  });
-  all.select('.bar')
-     .style('width', d=>Math.max(scale(d.demanda),1.5)+'%')
-     .style('background', d=>campusColor[d.campus]);
-  all.select('.val').text(d=>fmtD(d.demanda));
-
-  if(!data.length) d3.select('#list').html('<div class="empty">Nenhum curso encontrado com esses filtros.</div>');
+function linhaHTML(c, i, escala){
+  // o grau pode vir seguido do marcador de rodapé: «(Bacharelados)**»
+  const nome = esc(c.curso).replace(/\s*\((.*?)\)(\**)\s*$/,
+    ' <small>$1$2 · '+esc(c.campus)+' · '+esc(c.turno)+'</small>');
+  const largura = Math.max(escala(c.demanda), 1.5);
+  return '<div class="row'+(c.id===state.sel?' sel':'')+'" data-id="'+c.id+'">'
+    + '<div class="pos">'+(i+1)+'</div>'
+    + '<div class="nome">'+nome+'</div>'
+    + '<div class="barwrap"><div class="bar" style="width:'+largura+'%;'
+    + 'background:'+campusColor[c.campus]+'"></div></div>'
+    + '<div class="val">'+fmtD(c.demanda)+'</div>'
+    + '</div>';
 }
 
 let detailChart = null;
@@ -321,6 +335,13 @@ document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click', ()=>
   ch.classList.toggle('on');
   render();
 }));
+document.getElementById('list').addEventListener('click', e=>{
+  const linha = e.target.closest('.row');
+  if(!linha) return;
+  state.sel = Number(linha.dataset.id);
+  render();
+  showDetail(CURSOS.find(c=>c.id===state.sel));
+});
 window.addEventListener('resize', ()=>detailChart && detailChart.resize());
 
 function avisaOrigemPublicada(){
@@ -344,7 +365,6 @@ carregaCursos().then(({cursos, publicada})=>{
   CURSOS = cursos;
   CURSOS.forEach((c,i)=>c.id=i);
   if(publicada) avisaOrigemPublicada();
-  document.getElementById('list').innerHTML = '';  // tira o «Carregando…»
   render();
 }).catch(erro=>{
   document.getElementById('list').innerHTML =
