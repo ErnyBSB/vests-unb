@@ -113,15 +113,17 @@ a decisão de quem se inscreve.
 <a id="estado-atual"></a>
 ### Estado atual
 
-O repositório está na **fase de produto publicado, pipeline nascendo**. O explorador de
-2026 está no ar, mas os números dele continuam embutidos no HTML; a primeira extração
-versionada é a de 2027, escrita antes de o dado virar produto.
+**Todo dado publicado aqui é reproduzível a partir do repositório.** Os dois PDFs de
+origem têm extração versionada em `codigo/`, e cada script confere o próprio resultado
+contra os totais que o documento oficial imprime.
 
 O que já existe:
 
 * **Explorador de concorrência 2026** — 99 cursos/turnos, 11 sistemas de ingresso,
   publicado no GitHub Pages;
 * os **documentos oficiais** que originaram os dados, preservados como recebidos;
+* **extração da tabela de demanda de 2026** — os 99 cursos em JSON, com todos os valores
+  conferidos contra o que o explorador publica hoje;
 * **extração do Anexo I do edital de 2027** — 105 cursos, conferida contra os totais
   impressos no próprio edital;
 * publicação automática: todo push em `main` redeploya o site.
@@ -130,16 +132,16 @@ O que ainda não existe:
 
 | Referência | Situação |
 |---|---|
-| extração de 2026 | não versionada — o vetor `CURSOS` está embutido no HTML |
-| dados de 2026 como arquivo | não há `.json` separado que o explorador leia |
+| explorador lendo o JSON | o app ainda carrega o vetor `CURSOS` embutido, não `dados/2026/` |
 | demanda de 2027 | só sai depois de encerradas as inscrições; o Anexo I traz vagas, não inscritos |
 | nota de corte por sistema | não consta na tabela de demanda; exigiria outra fonte |
+| edições anteriores a 2026 | a estrutura por ano comporta, nada foi modelado ainda |
 
-> [!IMPORTANT]
-> **O dataset de 2026 não é reproduzível a partir deste repositório.** Conferir um número
-> significa abrir o PDF em
-> [`sources/2026/tabela-demanda-vagas-2026.pdf`](sources/2026/tabela-demanda-vagas-2026.pdf)
-> e ler à mão. O de 2027 já é: `make`-nada, um comando — ver [Uso](#uso).
+> [!NOTE]
+> O explorador continua servindo os números de um vetor embutido no HTML. Esse vetor e o
+> `dados/2026/demanda-2026.json` foram confrontados campo a campo e **têm valores
+> idênticos** — só os nomes de seis cursos diferem, porque o app usa versões encurtadas à
+> mão. Fazer o app ler o JSON é o próximo item do [roadmap](#roadmap).
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -221,7 +223,47 @@ Para trabalhar no repositório:
 <a id="rodar-a-extração"></a>
 ### Rodar a extração
 
-O Anexo I do edital de 2027 (o quadro de vagas) sai do PDF em um comando:
+São dois scripts, um por documento de origem. Nenhum dos dois aceita argumento
+implícito: o PDF de entrada e o arquivo de saída são sempre explícitos, para que ninguém
+regenere o arquivo errado por engano.
+
+**Tabela de demanda de 2026** — 99 cursos, com o detalhe de cada sistema de ingresso:
+
+```sh
+python3 codigo/extrai_demanda.py \
+    sources/2026/tabela-demanda-vagas-2026.pdf \
+    dados/2026/demanda-2026.json
+```
+
+```
+dados/2026/demanda-2026.json: 99 cursos em 4 campi — totais conferem
+```
+
+O `--confere-com` acrescenta a conferência mais forte disponível: confrontar o resultado
+com o vetor `CURSOS` que o explorador publica hoje.
+
+```sh
+python3 codigo/extrai_demanda.py \
+    sources/2026/tabela-demanda-vagas-2026.pdf \
+    dados/2026/demanda-2026.json \
+    --confere-com produtos/2026/explorador-concorrencia-unb-2026.html
+```
+
+```
+conferido com explorador-concorrencia-unb-2026.html: 99 cursos, todos os valores idênticos
+6 nome(s) diferem — o explorador publica versões encurtadas:
+  · publicado: Música (Bacharelado)
+    tabela:    Música (Bacharelado)*
+  ...
+```
+
+Valor divergente **aborta**: significa que uma das duas pontas está com o número errado.
+Nome divergente apenas **reporta**: o explorador foi montado com nomes encurtados à mão
+— «Música (Bacharelado)» sem o asterisco que marca exigência de habilidade específica,
+«Ciências Sociais (Bacharelado/Licenciatura)» no lugar do nome completo — e a extração
+devolve o que a tabela oficial escreve, sem reproduzir a abreviação.
+
+**Anexo I do edital de 2027** — o quadro de vagas:
 
 ```sh
 python3 codigo/extrai_anexo_i.py \
@@ -233,9 +275,9 @@ python3 codigo/extrai_anexo_i.py \
 dados/2027/anexo-i-quadro-de-vagas.md: 105 cursos em 6 seções — totais conferem
 ```
 
-A extração é **determinística**: rodar duas vezes sobre o mesmo PDF produz um arquivo byte
-a byte idêntico — não há data de geração no arquivo de saída, nem acesso à rede. Confira
-por conta própria:
+As duas extrações são **determinísticas**: rodar duas vezes sobre o mesmo PDF produz um
+arquivo byte a byte idêntico — não há data de geração na saída, nem acesso à rede.
+Confira por conta própria:
 
 ```sh
 python3 codigo/extrai_anexo_i.py sources/2027/edital_Unb_2027.pdf /tmp/a.md
@@ -244,12 +286,19 @@ cmp /tmp/a.md /tmp/b.md && echo idênticos
 ```
 
 > [!IMPORTANT]
-> O script **não confia em si mesmo**. O edital imprime o total de vagas de cada campus e
-> um total geral, e a extração é confrontada com esses números: a soma dos 11 sistemas tem
-> de dar o total de cada curso, a soma dos cursos tem de dar o total do campus, e a soma
-> dos campi tem de dar o total geral. Qualquer divergência **aborta a execução** em vez de
-> gravar o arquivo — uma coluna trocada produz dado errado com aparência de dado certo, e
-> esse é o erro que não se percebe lendo o resultado.
+> Os scripts **não confiam em si mesmos**. Os dois documentos publicam os próprios
+> totais, e a extração é confrontada com eles: a soma dos sistemas tem de dar o total de
+> cada curso, a soma dos cursos tem de dar o total do campus, e a soma dos campi tem de
+> dar o total geral. Qualquer divergência **aborta a execução** em vez de gravar o
+> arquivo — uma coluna trocada produz dado errado com aparência de dado certo, e esse é o
+> erro que não se percebe lendo o resultado.
+
+> [!WARNING]
+> **A demanda não é `inscritos ÷ vagas`** e não é recalculada em lugar nenhum. A Obs² da
+> tabela de 2026 diz que no cálculo «foram considerados todos os candidatos que concorrem
+> às vagas do curso, independentemente de estarem ou não concorrendo prioritariamente a
+> essas vagas». Daí uma faixa com 2 vagas e 32 inscritos aparecer com demanda 17,00. O
+> número é reproduzido como publicado; recalculá-lo inventaria dado que a fonte não traz.
 
 <a id="explorar-a-concorrência-de-2026"></a>
 ### Explorar a concorrência de 2026
@@ -304,8 +353,11 @@ sources/<ano>/            Documentos oficiais em PDF — a fonte primária, pres
   2027/
     edital_Unb_2027.pdf                     Edital nº 1 – Vestibular 2027
 codigo/                   Os scripts de extração
+    extrai_demanda.py                       Tabela de demanda → JSON
     extrai_anexo_i.py                       Anexo I do edital → Markdown
 dados/<ano>/              Dado derivado, gerado por script — nunca editado à mão
+  2026/
+    demanda-2026.json                       Demanda e vagas, 99 cursos
   2027/
     anexo-i-quadro-de-vagas.md              Quadro de vagas, 105 cursos
 produtos/<ano>/           Os aplicativos HTML gerados, um por edição
@@ -512,8 +564,8 @@ de o README deixar de virar página inicial.
 - [x] Publicação no GitHub Pages
 - [x] **Extração versionada em `codigo/`** — primeiro caso: Anexo I do edital de 2027
     - [x] Conferência automática dos totais extraídos contra os impressos no PDF
-    - [ ] Estender à tabela de demanda de 2026, hoje embutida no HTML
-- [ ] Dados como arquivo próprio (`dados/2026/cursos.json`), lidos pelo HTML
+    - [x] Estender à tabela de demanda de 2026 — `dados/2026/demanda-2026.json`
+- [ ] Fazer o explorador **ler** `dados/2026/demanda-2026.json` em vez do vetor embutido
 - [ ] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
