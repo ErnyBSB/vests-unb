@@ -599,16 +599,28 @@ PDF oficial, abra uma *issue* apontando o curso, o sistema de ingresso e a pági
    git checkout -b feat/extracao-tabela-demanda
    ```
 2. Faça as alterações e confira o produto no navegador antes de commitar
-3. Commite em **Conventional Commits**, com título em inglês no imperativo e escopo por
+3. **Ao alterar o explorador, suba a versão no mesmo commit.** A constante fica no topo
+   do `<script>` de
+   [`explorador-concorrencia-unb-2026.html`](produtos/2026/explorador-concorrencia-unb-2026.html):
+   ```js
+   const APP = {versao:'2.00', quando:'ago/2026'};
+   ```
+   Versão que se esquece de subir é pior que versão nenhuma, porque passa a mentir para
+   quem abre a página por um link antigo. O mês é **declarado**, nunca capturado do
+   relógio — ver o aviso em [Uso](#rodar-a-extração) sobre determinismo.
+
+   A constante `DADOS`, logo abaixo, é outro fato: a edição do vestibular e o mês da
+   tabela que originou os números. Só muda quando o dado muda.
+4. Commite em **Conventional Commits**, com título em inglês no imperativo e escopo por
    edição quando fizer sentido
    ```sh
    git commit -m 'feat(2026): extract demand table into versioned json'
    ```
-4. Empurre a branch
+5. Empurre a branch
    ```sh
    git push -u origin feat/extracao-tabela-demanda
    ```
-5. Abra um *pull request* — nunca use force-push
+6. Abra um *pull request* — nunca use force-push
 
 Conteúdo, código, comentários e documentação em **português**; só as mensagens de commit
 em inglês.
