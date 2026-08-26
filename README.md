@@ -1,97 +1,507 @@
-![Vestibular UnB — vagas, demanda e cursos, dados em app HTML](images/repo-readme-image.png)
+<!-- Estrutura baseada no Best-README-Template (othneildrew), adaptada a um
+     repositório público de dados, sem código de execução e com produto
+     publicado no GitHub Pages. -->
+<a id="readme-top"></a>
 
-# vests-unb
+[![Unlicense][licenca-shield]](#licença-e-uso-do-material)
+[![GitHub Pages][pages-shield]][pages-url]
+[![HTML][html-shield]][html-url]
+[![ECharts][echarts-shield]][echarts-url]
+[![D3][d3-shield]][d3-url]
+[![Cursos][cursos-shield]](#os-dados)
 
-Neste repositório há arquivos, executáveis ou não, com dados sobre os
-vestibulares da Universidade de Brasília (UnB). O material é produzido em
-Software Livre (The Unlicense, domínio público) e está disponível para ajudar
-pessoas interessadas no ingresso nessa universidade, que também foi minha
-universidade por muitos anos.
 
-Na prática: os documentos oficiais publicados pelo Cebraspe/UnB (em PDF) viram
-um aplicativo HTML de página única, navegável, que permite comparar a
-concorrência (candidato/vaga) curso a curso e por sistema de ingresso.
 
-## O produto
+<!-- CABEÇALHO -->
+<br />
+<div align="center">
 
-**[`produtos/2026/explorador-concorrencia-unb-2026.html`](produtos/2026/explorador-concorrencia-unb-2026.html)**
-— Explorador de concorrência do Vestibular 2026.
+  <img src="images/repo-readme-image.png" alt="Vestibular UnB — vagas, demanda e cursos, dados em app HTML" width="100%">
 
-Abra o arquivo direto no navegador (duplo clique). Não há build, servidor nem
-instalação. É necessária conexão com a internet: as bibliotecas de gráficos e as
-fontes são carregadas por CDN.
+  <h3 align="center">vests-unb</h3>
 
-O que dá para fazer:
+  <p align="center">
+    Dados públicos do Vestibular da Universidade de Brasília,
+    <br />
+    transformados em aplicativos HTML que qualquer candidato abre no navegador.
+    <br />
+    <br />
+    <a href="https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html"><strong>Abrir o explorador de concorrência 2026 »</strong></a>
+    <br />
+    <br />
+    <a href="#os-dados">Os dados</a>
+    &middot;
+    <a href="sources/2026/">Documentos-fonte</a>
+    &middot;
+    <a href="#roadmap">Roadmap</a>
+  </p>
+</div>
 
-- Percorrer as **99 combinações de curso/turno** ordenadas por demanda,
-  inscritos, vagas ou nome.
-- Filtrar por **campus** (Darcy Ribeiro, Ceilândia, Gama, Planaltina) e por
-  **turno** (diurno/noturno).
-- Buscar curso pelo nome, sem sensibilidade a acento ou maiúscula.
-- Alternar entre **escala logarítmica e linear** nas barras — necessário porque a
-  distribuição é muito assimétrica (Medicina, com ~209 candidatos por vaga,
-  achata visualmente todo o resto numa escala linear).
-- Clicar num curso para abrir o detalhe da concorrência em cada um dos
-  **11 sistemas de ingresso** (Universal, Cotas para Pessoas Negras, Cotas Trans
-  e as faixas de escola pública por renda, PPI/não-PPI e deficiência).
 
-Os indicadores do topo (cursos exibidos, inscritos, vagas, demanda média) são
-recalculados conforme os filtros aplicados.
 
-### O recorte de 2026
+<!-- SUMÁRIO -->
+<details>
+  <summary>Sumário</summary>
+  <ol>
+    <li>
+      <a href="#sobre-o-projeto">Sobre o projeto</a>
+      <ul>
+        <li><a href="#estado-atual">Estado atual</a></li>
+        <li><a href="#construído-com">Construído com</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#começando">Começando</a>
+      <ul>
+        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#instalação">Instalação</a></li>
+      </ul>
+    </li>
+    <li><a href="#uso">Uso</a></li>
+    <li><a href="#estrutura-do-repositório">Estrutura do repositório</a></li>
+    <li><a href="#os-dados">Os dados</a></li>
+    <li>
+      <a href="#modelo-de-dados">Modelo de dados</a>
+      <ul>
+        <li><a href="#por-que-a-escala-logarítmica">Por que a escala logarítmica</a></li>
+        <li><a href="#decisões-que-valem-conhecer">Decisões que valem conhecer</a></li>
+      </ul>
+    </li>
+    <li><a href="#integridade-do-dado-fonte">Integridade do dado-fonte</a></li>
+    <li><a href="#publicação">Publicação</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contribuindo">Contribuindo</a></li>
+    <li><a href="#licença-e-uso-do-material">Licença e uso do material</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#referências-e-créditos">Referências e créditos</a></li>
+  </ol>
+</details>
+
+
+
+<!-- SOBRE O PROJETO -->
+<a id="sobre-o-projeto"></a>
+## Sobre o projeto
+
+A UnB publica, antes de cada vestibular, a tabela de demanda por vaga. É informação
+decisiva para quem ainda está escolhendo o curso — e chega em PDF, dezenas de páginas de
+números miúdos, impossível de ordenar, filtrar ou comparar.
+
+Este repositório pega esses documentos oficiais e devolve o mesmo conteúdo como
+**aplicativo HTML de página única**: ordenável, filtrável, com o detalhe da concorrência
+em cada sistema de ingresso a um clique. Sem instalação, sem servidor, sem cadastro.
+
+O material é produzido em **Software Livre** (The Unlicense, domínio público) e está
+disponível para ajudar pessoas interessadas no ingresso nessa universidade, que também
+foi minha universidade por muitos anos.
+
+A pergunta que o produto responde não é só «qual curso é mais concorrido». É
+**«concorrido para quem»** — a demanda no sistema Universal e a demanda numa faixa de
+cota podem diferir por uma ordem de grandeza no mesmo curso, e é essa diferença que muda
+a decisão de quem se inscreve.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<a id="estado-atual"></a>
+### Estado atual
+
+O repositório está na **fase de produto publicado, pipeline pendente**. O explorador de
+2026 está pronto e no ar; a extração que gerou os números dele ainda não está versionada.
+
+O que já existe:
+
+* **Explorador de concorrência 2026** — 99 cursos/turnos, 11 sistemas de ingresso,
+  publicado no GitHub Pages;
+* os **três documentos oficiais** que originaram os dados, preservados como recebidos;
+* publicação automática: todo push em `main` redeploya o site.
+
+O que ainda não existe:
+
+| Referência | Situação |
+|---|---|
+| `codigo/` | vazio — a extração do PDF para JSON foi feita fora do repositório |
+| dados como arquivo | o vetor `CURSOS` está embutido no HTML, não há `.json` separado |
+| edições anteriores a 2026 | a estrutura por ano já comporta, nada foi modelado ainda |
+| nota de corte por sistema | não consta na tabela de demanda; exigiria outra fonte |
+
+> [!IMPORTANT]
+> Enquanto `codigo/` estiver vazio, **o dataset não é reproduzível a partir deste
+> repositório**. Conferir um número significa abrir o PDF em
+> [`sources/2026/tabela-demanda-vagas-2026.pdf`](sources/2026/tabela-demanda-vagas-2026.pdf)
+> e ler à mão. Resolver isso é o item um do [roadmap](#roadmap).
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<a id="construído-com"></a>
+### Construído com
+
+O produto é um arquivo HTML único, sem build e sem dependências instaláveis. As
+bibliotecas entram por CDN, em tempo de carregamento da página.
+
+* [![HTML][html-shield]][html-url] — página única, dados embutidos, zero build
+* [![ECharts][echarts-shield]][echarts-url] — 5.4.3, o gráfico de barras do painel de detalhe
+* [![D3][d3-shield]][d3-url] — 7.8.5, o *data join* da lista e as escalas log/linear
+* [![GitHub Pages][pages-shield]][pages-url] — publicação a partir de `main`, na raiz
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- COMEÇANDO -->
+<a id="começando"></a>
+## Começando
+
+<a id="pré-requisitos"></a>
+### Pré-requisitos
+
+* Um **navegador** moderno.
+* **Conexão com a internet** ao abrir o explorador — ECharts, D3 e as fontes vêm de CDN.
+  Sem rede, a página carrega a estrutura mas não desenha os gráficos.
+
+Nada mais. Não há runtime a instalar, nem ambiente virtual, nem `make`.
+
+<a id="instalação"></a>
+### Instalação
+
+Para só **usar**, não instale nada: abra
+[o explorador publicado](https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html).
+
+Para trabalhar no repositório:
+
+1. Clone
+   ```sh
+   git clone https://github.com/ErnyBSB/vests-unb.git
+   cd vests-unb
+   ```
+2. Abra o produto direto do disco — o `file://` basta, não é preciso servidor
+   ```sh
+   xdg-open produtos/2026/explorador-concorrencia-unb-2026.html
+   ```
+3. Confira que os documentos-fonte vieram inteiros
+   ```sh
+   ls -l sources/2026/
+   ```
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- USO -->
+<a id="uso"></a>
+## Uso
+
+O explorador tem quatro controles, todos combináveis:
+
+| Controle | O que faz |
+|---|---|
+| **Busca** | filtra por nome do curso, ignorando acento e maiúscula (`musica` acha «Música») |
+| **Ordenação** | demanda ↓ ou ↑, inscritos ↓, vagas ↓, ou alfabética |
+| **Chips** | ligam e desligam campi (Darcy Ribeiro, Ceilândia, Gama, Planaltina) e turnos |
+| **Escala log** | alterna a escala das barras entre logarítmica e linear |
+
+Os quatro indicadores do topo — cursos exibidos, inscritos, vagas e demanda média — são
+recalculados sobre **o recorte visível**, não sobre o total. Filtrar por Planaltina e ler
+a «demanda média» dá a demanda média de Planaltina.
+
+Clicar numa linha abre o painel de detalhe: vagas, inscritos e demanda do curso, mais um
+gráfico de barras com a concorrência em **cada sistema de ingresso**, colorido por
+natureza do sistema — azul para o Universal, vinho para as cotas raciais e trans, verde
+para as faixas de escola pública.
+
+Extrair os dados para trabalhar em outra ferramenta, enquanto não há `.json` publicado:
+
+```sh
+python3 - <<'PY'
+import re, json
+html = open('produtos/2026/explorador-concorrencia-unb-2026.html', encoding='utf-8').read()
+cursos = json.loads(re.search(r'const CURSOS = (\[.*?\]);', html, re.S).group(1))
+
+print(len(cursos))                                    # 99
+print(sum(c['vagas'] for c in cursos))                # 2102
+print(sorted(cursos, key=lambda c: -c['demanda'])[0]) # Medicina
+PY
+```
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- ESTRUTURA -->
+<a id="estrutura-do-repositório"></a>
+## Estrutura do repositório
+
+```
+sources/<ano>/            Documentos oficiais em PDF — a fonte primária, preservada
+                          exatamente como publicada pelo Cebraspe/UnB
+  2026/
+    tabela-demanda-vagas-2026.pdf           Demanda e vagas por curso e sistema
+    2026_Boletim-informativo_VestUnB_v4.pdf Boletim informativo do vestibular
+    Guia-do-Vestibular-2026_Tradicional.pdf Guia do Vestibular Tradicional
+codigo/                   Scripts de extração e tratamento — ainda vazio
+produtos/<ano>/           Os aplicativos HTML gerados, um por edição
+  2026/
+    explorador-concorrencia-unb-2026.html   Explorador de concorrência
+images/                   Imagens do repositório
+LICENSE                   The Unlicense — domínio público
+```
+
+A organização **por ano** é proposital: cada edição do vestibular entra como um diretório
+novo, e o produto de uma edição passada continua abrindo exatamente como estava, com os
+números daquele ano. Nada é sobrescrito de uma edição para a outra.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- OS DADOS -->
+<a id="os-dados"></a>
+## Os dados
+
+Vestibular Tradicional da UnB, edição **2026**, a partir da tabela de demanda publicada
+em dezembro de 2025 — portanto **inscrições encerradas**, números definitivos, antes da
+aplicação da prova.
 
 | | |
 |---|---|
 | Cursos/turnos | 99 |
 | Vagas | 2.102 |
 | Inscritos | 16.823 |
+| Demanda média geral | 8,00 candidatos/vaga |
 | Campi | 4 |
 | Sistemas de ingresso | 11 |
+| Grupos de prova | 2 (I: 56 cursos · II: 43) |
+| Turnos | Diurno: 69 · Noturno: 30 |
 
-Cursos mais concorridos: Medicina (208,95 cand/vaga), Direito diurno (41,40),
-Psicologia (40,56), Ciência da Computação (30,50) e Direito noturno (25,67).
+Por campus:
 
-## Estrutura do repositório
+| Campus | Cursos/turnos | Vagas | Inscritos | Demanda |
+|---|---:|---:|---:|---:|
+| Darcy Ribeiro | 88 | 1.729 | 15.397 | 8,91 |
+| Ceilândia | 6 | 148 | 749 | 5,06 |
+| Gama | 1 | 140 | 637 | 4,55 |
+| Planaltina | 4 | 85 | 40 | 0,47 |
 
+Os extremos, que é onde a informação costuma estar:
+
+* **Medicina** — 208,95 candidatos por vaga, cinco vezes o segundo colocado;
+* **Direito** diurno (41,40), **Psicologia** (40,56), **Ciência da Computação** (30,50);
+* **18 cursos com demanda abaixo de 1** — mais vagas do que inscritos, sendo o menor
+  Letras Tradução Espanhol, com 0,07.
+
+Os 11 sistemas de ingresso: **Universal**, **Cotas para Pessoas Negras**, **Cotas Trans**
+e as oito faixas de escola pública, cruzando renda (≤1 salário mínimo e >1), condição
+PPI ou não-PPI, e vagas gerais ou de pessoa com deficiência.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- MODELO DE DADOS -->
+<a id="modelo-de-dados"></a>
+## Modelo de dados
+
+O vetor `CURSOS`, embutido no HTML, tem um registro por **curso/turno** — a mesma
+graduação em dois turnos são dois registros, porque concorrem separadamente:
+
+```json
+{
+  "grupo": "I",
+  "curso": "Administração (Bacharelado)",
+  "campus": "Darcy Ribeiro",
+  "turno": "Diurno",
+  "vagas": 30,
+  "inscritos": 172,
+  "demanda": 5.73,
+  "sistemas": [
+    { "sistema": "Universal", "vagas": 12, "inscritos": 172, "demanda": 14.33 },
+    { "sistema": "Cotas Negras", "vagas": 2, "inscritos": 13, "demanda": 6.5 }
+  ]
+}
 ```
-sources/<ano>/      Documentos oficiais em PDF — a fonte primária, preservada
-                   como recebida do Cebraspe/UnB
-codigo/            Scripts de extração e tratamento dos dados
-produtos/<ano>/    Os aplicativos HTML gerados, um por edição do vestibular
-images/            Imagens do repositório
-```
 
-A organização por ano é proposital: cada edição do vestibular entra como um novo
-diretório, e os produtos das edições anteriores continuam abríveis como estavam.
+> [!WARNING]
+> **Não some os `inscritos` dos sistemas para chegar ao total do curso.** Todo candidato
+> concorre no **Universal** *e* no sistema que reivindicou; o `inscritos` do Universal é,
+> por isso, igual ao total do curso. Somar a coluna conta cada candidato duas vezes. O
+> `inscritos` do nível do curso é o número correto.
 
-## Fontes
+<a id="por-que-a-escala-logarítmica"></a>
+### Por que a escala logarítmica
 
-Todos os PDFs em `sources/2026/` são documentos públicos publicados pelo Cebraspe
-e pela Universidade de Brasília:
+A distribuição da demanda vai de 0,07 a 208,95 — quase quatro ordens de grandeza. Numa
+escala linear, Medicina consome a largura inteira e os outros 98 cursos viram traços
+indistinguíveis contra a margem. A escala log é o padrão do explorador por isso, com
+domínio fixo em `[0.07, máximo]` e `clamp`, para que o eixo não se mexa quando os filtros
+mudam e a comparação visual entre dois recortes continue válida.
 
-- `tabela-demanda-vagas-2026.pdf` — tabela de demanda e vagas por curso e
-  sistema de ingresso. **É a origem dos números do explorador.**
-- `2026_Boletim-informativo_VestUnB_v4.pdf` — boletim informativo do vestibular.
-- `Guia-do-Vestibular-2026_Tradicional.pdf` — guia do Vestibular Tradicional.
+<a id="decisões-que-valem-conhecer"></a>
+### Decisões que valem conhecer
 
-Em caso de divergência, valem os editais e a página oficial de acompanhamento do
-vestibular, não os números reproduzidos aqui.
+* **A unidade é o curso/turno, não o curso.** Direito diurno (41,40) e Direito noturno
+  (25,67) são seleções distintas; fundi-los produziria um número que não corresponde a
+  nenhuma decisão real de candidato.
+* **A demanda por sistema é o que importa**, e é justamente o que o PDF esconde. A média
+  do curso pode mascarar uma faixa vazia e outra saturada.
+* **Sistemas sem vaga e sem inscrito são omitidos** do gráfico de detalhe: nem todo curso
+  oferta todas as faixas, e barras zeradas só ocupariam espaço.
+* **Nada é arredondado na origem.** A demanda vem da fonte com duas casas; a formatação
+  em vírgula é só de exibição.
 
-## Estado atual
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-Os dados do explorador de 2026 estão embutidos no próprio HTML, no vetor
-`CURSOS`. A extração a partir do PDF ainda não está versionada — `codigo/` está
-vazio. Enquanto isso não for resolvido, o dataset não é reproduzível a partir do
-que está no repositório, o que é o principal ponto em aberto para a edição de
-2027.
 
-## Licença
 
-Liberado em domínio público sob a [The Unlicense](LICENSE). Use, copie,
-modifique e redistribua à vontade, sem precisar pedir.
+<!-- INTEGRIDADE -->
+<a id="integridade-do-dado-fonte"></a>
+## Integridade do dado-fonte
 
-## Aviso
+Os PDFs em `sources/` **não são gerados aqui** — são baixados do Cebraspe/UnB e
+preservados como vieram. Duas regras seguem daí:
 
-Projeto independente, sem vínculo com a Universidade de Brasília ou com o
-Cebraspe. Os dados são reproduzidos a partir de documentos públicos e podem
-conter erros de extração.
+1. **Não edite, não reexporte, não otimize os PDFs.** Eles são o único registro do que a
+   banca publicou, e são o que permite conferir qualquer número do explorador. Um PDF
+   reprocessado deixa de servir a essa função sem que nada pareça errado.
+2. **Em caso de divergência, o oficial vence.** Os editais e a página de acompanhamento
+   do vestibular são a norma — não os números reproduzidos aqui, que passaram por uma
+   extração e podem conter erro.
+
+O explorador é uma **leitura** dos documentos oficiais, não uma fonte independente. Quem
+for tomar decisão de inscrição deve conferir no edital.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- PUBLICAÇÃO -->
+<a id="publicação"></a>
+## Publicação
+
+O site é servido pelo **GitHub Pages** a partir de `main`, na raiz, com o build clássico
+do Jekyll — é ele que transforma este README na página inicial. Todo push em `main`
+redeploya automaticamente.
+
+| | |
+|---|---|
+| Site | <https://ernybsb.github.io/vests-unb/> |
+| Explorador 2026 | <https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html> |
+
+O HTML do explorador não usa a sintaxe de template do Liquid — chaves duplas ou
+chaves-porcento —, então o Jekyll não interfere no JavaScript. Um produto futuro que use
+essa sintaxe precisará ser protegido, ou o Jekyll desligado com um `.nojekyll`, ao custo
+de o README deixar de virar página inicial.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- ROADMAP -->
+<a id="roadmap"></a>
+## Roadmap
+
+- [x] Documentos oficiais de 2026 preservados em `sources/`
+- [x] Explorador de concorrência 2026 — 99 cursos, 11 sistemas de ingresso
+- [x] Publicação no GitHub Pages
+- [ ] **Extração versionada em `codigo/`** — do PDF da tabela de demanda ao JSON
+    - [ ] Conferência automática: totais do JSON contra os totais impressos no PDF
+- [ ] Dados como arquivo próprio (`dados/2026/cursos.json`), lidos pelo HTML
+- [ ] Página inicial listando as edições disponíveis
+- [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
+- [ ] Comparador de cursos lado a lado
+- [ ] Funcionamento sem rede: bibliotecas e fontes embutidas no HTML
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- CONTRIBUINDO -->
+<a id="contribuindo"></a>
+## Contribuindo
+
+Correções de dado são especialmente bem-vindas: se um número do explorador não bate com o
+PDF oficial, abra uma *issue* apontando o curso, o sistema de ingresso e a página do PDF.
+
+1. Crie sua branch a partir de `main`, no padrão `tipo/assunto-em-kebab-case`
+   (`docs/`, `feat/`, `fix/`, `chore/`)
+   ```sh
+   git checkout main && git pull --ff-only
+   git checkout -b feat/extracao-tabela-demanda
+   ```
+2. Faça as alterações e confira o produto no navegador antes de commitar
+3. Commite em **Conventional Commits**, com título em inglês no imperativo e escopo por
+   edição quando fizer sentido
+   ```sh
+   git commit -m 'feat(2026): extract demand table into versioned json'
+   ```
+4. Empurre a branch
+   ```sh
+   git push -u origin feat/extracao-tabela-demanda
+   ```
+5. Abra um *pull request* — nunca use force-push
+
+Conteúdo, código, comentários e documentação em **português**; só as mensagens de commit
+em inglês.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- LICENÇA -->
+<a id="licença-e-uso-do-material"></a>
+## Licença e uso do material
+
+Liberado em **domínio público** sob a [The Unlicense](LICENSE). Copie, modifique,
+publique, use, compile, venda ou distribua, para qualquer fim, sem precisar pedir e sem
+precisar dar crédito.
+
+Os PDFs em `sources/` são **documentos públicos** do Cebraspe e da Universidade de
+Brasília, preservados aqui sem modificação. A licença deste repositório cobre o trabalho
+de análise e o aplicativo, não os documentos originais.
+
+Projeto independente, **sem vínculo** com a Universidade de Brasília ou com o Cebraspe.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- CONTATO -->
+<a id="contato"></a>
+## Contato
+
+Erny Bo-D — [@ErnyBSB](https://github.com/ErnyBSB)
+
+Link do projeto: [https://github.com/ErnyBSB/vests-unb](https://github.com/ErnyBSB/vests-unb)
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- CRÉDITOS -->
+<a id="referências-e-créditos"></a>
+## Referências e créditos
+
+* [Cebraspe](https://www.cebraspe.org.br) — organizador do Vestibular da UnB; os documentos-fonte
+* [Universidade de Brasília](https://www.unb.br) — a instituição, e a página oficial de acompanhamento do vestibular
+* [Apache ECharts](https://echarts.apache.org) — o gráfico do painel de detalhe
+* [D3](https://d3js.org) — o *data join* da lista e as escalas
+* [IBM Plex](https://www.ibm.com/plex/) e [Spectral](https://fonts.google.com/specimen/Spectral) — a tipografia
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template) — estrutura deste README
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
+
+<!-- LINKS E IMAGENS -->
+[licenca-shield]: https://img.shields.io/badge/licen%C3%A7a-Unlicense-brightgreen?style=for-the-badge
+[pages-shield]: https://img.shields.io/badge/GitHub%20Pages-no%20ar-222222?style=for-the-badge&logo=github&logoColor=white
+[pages-url]: https://ernybsb.github.io/vests-unb/
+[html-shield]: https://img.shields.io/badge/HTML5-p%C3%A1gina%20%C3%BAnica-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://developer.mozilla.org/pt-BR/docs/Web/HTML
+[echarts-shield]: https://img.shields.io/badge/ECharts-5.4.3-AA344D?style=for-the-badge&logo=apacheecharts&logoColor=white
+[echarts-url]: https://echarts.apache.org
+[d3-shield]: https://img.shields.io/badge/D3-7.8.5-F9A03C?style=for-the-badge&logo=d3dotjs&logoColor=white
+[d3-url]: https://d3js.org
+[cursos-shield]: https://img.shields.io/badge/2026-99%20cursos%20%C2%B7%202.102%20vagas-1F5673?style=for-the-badge
