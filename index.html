@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vestibular UnB — os dados públicos, curso a curso</title>
+<meta name="description" content="Dados públicos do Vestibular da Universidade de Brasília em aplicativos que abrem no navegador: vagas de 2027 e concorrência de 2026, curso a curso.">
+<style>
+  :root{
+    --bg:#F4F6F5; --panel:#FFFFFF; --ink:#1A2B23; --ink-soft:#5C6E64;
+    --grid:#E1E7E3; --verde:#00594C; --verde-claro:#2E8B74; --azul:#1F5673;
+    --ambar:#C98A3E; --vinho:#8E3B46; --hl:#EAF2EF; --aviso:#FBF3E6;
+
+    /* Mesmas pilhas dos exploradores: nenhuma fonte é baixada, a página usa o
+       que a máquina já tem. A monoespaçada carrega os números, que precisam de
+       dígitos de largura igual para alinhar entre um cartão e outro. */
+    --fonte-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Noto Sans',
+                 'Helvetica Neue',Arial,sans-serif;
+    --fonte-mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,
+                 'DejaVu Sans Mono','Liberation Mono',monospace;
+    --fonte-serif:Georgia,'Iowan Old Style','Liberation Serif',
+                  'Times New Roman',serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fonte-sans);}
+  .page{max-width:920px;margin:0 auto;padding:36px 22px 80px;}
+
+  header{margin-bottom:22px;border-bottom:2px solid var(--verde);padding-bottom:20px;}
+  .eyebrow{font-family:var(--fonte-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);margin:0 0 8px;}
+  h1{font-family:var(--fonte-serif);font-weight:600;font-size:29px;line-height:1.25;margin:0 0 10px;}
+  .lede{color:var(--ink-soft);font-size:14.5px;line-height:1.6;max-width:660px;margin:0;}
+  .lede b{color:var(--ink);font-weight:600;}
+
+  h2.secao{
+    font-family:var(--fonte-mono);font-size:11px;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:500;
+    margin:0 0 12px;
+  }
+
+  /* Um cartão por edição. O bloco inteiro é o link: o alvo de clique é o
+     cartão, não só o texto do fim. */
+  .edicoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px;margin:0 0 34px;}
+  .edicao{
+    display:flex;flex-direction:column;
+    background:var(--panel);border:1px solid var(--grid);border-left:3px solid var(--verde);
+    border-radius:0 10px 10px 0;padding:18px 20px 16px;
+    text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .15s;
+  }
+  .edicao:hover{border-color:var(--verde-claro);border-left-color:var(--verde);box-shadow:0 3px 14px rgba(26,43,35,.09);transform:translateY(-1px);}
+  .edicao:focus-visible{outline:2px solid var(--verde);outline-offset:2px;}
+  .edicao .topo{display:flex;align-items:baseline;gap:9px;margin-bottom:9px;}
+  .edicao .ano{font-family:var(--fonte-mono);font-size:20px;font-weight:500;color:var(--verde);letter-spacing:-.01em;}
+  .edicao .tipo{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);}
+  .edicao h3{font-family:var(--fonte-serif);font-size:18px;font-weight:600;line-height:1.35;margin:0 0 8px;}
+  .edicao p{font-size:13px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px;}
+
+  /* Os números saem de dados/, nunca do HTML — ver o comentário no script. */
+  /* margin-top:auto empurra números e chamada para a base: os cartões alinham
+     entre si mesmo quando um traz aviso a mais que o outro. */
+  .nums{display:flex;gap:16px;flex-wrap:wrap;margin:auto 0 14px;padding-top:12px;border-top:1px solid var(--grid);min-height:1px;}
+  .nums .n{min-width:64px;}
+  .nums .v{font-family:var(--fonte-mono);font-size:17px;font-weight:500;color:var(--verde);display:block;line-height:1.2;}
+  .nums .n.univ .v{color:var(--azul);}
+  .nums .r{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);display:block;margin-top:3px;}
+  .nums.falhou{border-top-color:transparent;padding-top:0;margin-bottom:0;}
+
+  .edicao .cta{font-size:12.5px;font-weight:600;color:var(--verde);}
+  .edicao:hover .cta{text-decoration:underline;}
+  .edicao .nota{
+    font-size:11.5px;line-height:1.5;color:var(--ink);background:var(--aviso);
+    border-left:3px solid var(--ambar);border-radius:0 6px 6px 0;
+    padding:7px 11px;margin:0 0 14px;
+  }
+
+  .bruto{background:var(--panel);border:1px solid var(--grid);border-radius:10px;padding:18px 20px;}
+  .bruto p.intro{font-size:13px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px;}
+  .bruto ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 20px;}
+  .bruto li{font-size:12.5px;line-height:1.55;color:var(--ink-soft);}
+  .bruto a{color:var(--verde);text-decoration:none;font-weight:600;border-bottom:1px solid var(--grid);}
+  .bruto a:hover{border-bottom-color:var(--verde);}
+  .bruto code{font-family:var(--fonte-mono);font-size:11.5px;color:var(--ink);}
+
+  .site-footer{
+    margin-top:26px;padding-top:16px;border-top:1px solid var(--grid);
+    font-size:11.5px;line-height:1.6;color:var(--ink-soft);
+  }
+  .site-footer a{color:var(--verde);text-decoration:none;border-bottom:1px solid var(--grid);}
+  .site-footer a:hover{border-bottom-color:var(--verde);}
+  .site-footer p{margin:0 0 6px;}
+  .site-footer strong{color:var(--ink);font-weight:600;}
+  .site-footer .origem{
+    background:var(--hl);border-left:3px solid var(--ambar);
+    padding:8px 12px;border-radius:0 6px 6px 0;margin-bottom:10px;
+  }
+  .site-footer .origem code{font-family:var(--fonte-mono);font-size:10.5px;}
+  .site-footer .versao{
+    display:flex;gap:14px;flex-wrap:wrap;font-family:var(--fonte-mono);
+    font-size:10.5px;padding-top:8px;border-top:1px solid var(--grid);
+    margin-top:10px;
+  }
+  .site-footer .versao b{color:var(--verde);font-weight:500;}
+
+  @media (max-width:560px){
+    h1{font-size:24px;}
+    .page{padding:26px 16px 60px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Cebraspe · Universidade de Brasília</p>
+    <h1>O Vestibular da UnB, em dados que dá para ordenar</h1>
+    <p class="lede">
+      A UnB publica vagas e demanda em <b>PDF</b> — dezenas de páginas de números miúdos,
+      impossíveis de ordenar, filtrar ou comparar. Aqui está o mesmo conteúdo oficial como
+      <b>aplicativo que abre no navegador</b>: sem instalação, sem servidor, sem cadastro.
+    </p>
+  </header>
+
+  <h2 class="secao">Edições disponíveis</h2>
+
+  <div class="edicoes">
+
+    <a class="edicao" href="produtos/2027/explorador-vagas-unb-2027.html">
+      <span class="topo">
+        <span class="ano">2027</span>
+        <span class="tipo">Explorador de vagas</span>
+      </span>
+      <h3>Quantas vagas existem — e quantas existem para mim</h3>
+      <p>
+        A composição das vagas de cada curso entre os onze sistemas de ingresso. Dois terços
+        são reservadas, e quem olha só o total do curso não enxerga isso.
+      </p>
+      <p class="nota">
+        Vagas do <b>segundo semestre</b> de 2027 — não comparável com o total de 2026.
+      </p>
+      <div class="nums" id="n2027"></div>
+      <span class="cta">Abrir o explorador de vagas →</span>
+    </a>
+
+    <a class="edicao" href="produtos/2026/explorador-concorrencia-unb-2026.html">
+      <span class="topo">
+        <span class="ano">2026</span>
+        <span class="tipo">Explorador de concorrência</span>
+      </span>
+      <h3>Quão disputado é este curso — e disputado para quem</h3>
+      <p>
+        A demanda por vaga, curso a curso, aberta por sistema de ingresso. O Universal e uma
+        faixa de cota podem diferir por uma ordem de grandeza no mesmo curso.
+      </p>
+      <div class="nums" id="n2026"></div>
+      <span class="cta">Abrir o explorador de concorrência →</span>
+    </a>
+
+  </div>
+
+  <h2 class="secao">O material por trás dos aplicativos</h2>
+
+  <div class="bruto">
+    <p class="intro">
+      Todo número publicado aqui é <strong>reproduzível</strong>: sai de um PDF oficial
+      preservado no projeto, por um script que confere o próprio resultado contra os totais
+      que o documento imprime.
+    </p>
+    <ul>
+      <li>
+        <a href="https://github.com/ErnyBSB/vests-unb/tree/main/sources">Documentos-fonte</a><br>
+        Os PDFs do Cebraspe/UnB, como publicados
+      </li>
+      <li>
+        <a href="https://github.com/ErnyBSB/vests-unb/tree/main/dados">Dados extraídos</a><br>
+        JSON e Markdown, gerados por script
+      </li>
+      <li>
+        <a href="https://github.com/ErnyBSB/vests-unb/tree/main/codigo">Código da extração</a><br>
+        Python, sem dependências, determinístico
+      </li>
+      <li>
+        <a href="https://github.com/ErnyBSB/vests-unb">O repositório</a><br>
+        Como rodar, o modelo de dados e o roadmap
+      </li>
+    </ul>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      <strong>Os editais do Vestibular são a norma da seleção</strong>, não estes
+      aplicativos. Os números foram extraídos de documento oficial e podem conter erro de
+      extração; confira no edital antes de decidir sua inscrição.
+    </p>
+    <p>
+      Domínio público
+      (<a href="https://github.com/ErnyBSB/vests-unb/blob/main/LICENSE">The Unlicense</a>) ·
+      projeto independente, sem vínculo com a UnB ou com o Cebraspe.
+    </p>
+    <p class="versao">
+      <span>Página inicial <b id="vApp"></b> · <span id="vQuando"></span></span>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+// Versão da página e o mês em que ela saiu. Declaradas, nunca capturadas do
+// relógio — mesma regra dos exploradores: um carimbo automático faria toda
+// regeração aparecer como alteração no diff.
+const APP = {versao:'1.00', quando:'ago/2026'};
+
+// Os números dos cartões saem de dados/, jamais escritos neste HTML. Número
+// derivado digitado à mão é o que o projeto proíbe em dados/, e envelheceria em
+// silêncio: bastaria uma reextração para a página passar a mentir.
+//
+// Duas origens por edição, tentadas nesta ordem — o mesmo par que os
+// exploradores usam:
+//   1. o caminho relativo, que vale quando a página é servida por HTTP e
+//      reflete o clone em que se trabalha;
+//   2. a cópia publicada, necessária sob file://, em que o navegador bloqueia
+//      fetch de caminho relativo.
+const BASE_PUBLICADA = 'https://ernybsb.github.io/vests-unb/';
+
+const EDICOES = [
+  {
+    alvo: 'n2027',
+    caminho: 'dados/2027/vagas-2027.json',
+    // 105 cursos, 1.074 vagas, e a fatia do Universal — a leitura que o
+    // explorador de 2027 existe para dar.
+    resume: cursos => {
+      const vagas = soma(cursos, c => c.vagas);
+      const univ = soma(cursos, c => soma(c.sistemas.filter(s => s.sistema === 'Universal'), s => s.vagas));
+      return [
+        {v: cursos.length, r: 'cursos'},
+        {v: vagas, r: 'vagas'},
+        {v: pct(univ, vagas), r: 'no universal', classe: 'univ'},
+      ];
+    },
+  },
+  {
+    alvo: 'n2026',
+    caminho: 'dados/2026/demanda-2026.json',
+    resume: cursos => [
+      {v: cursos.length, r: 'cursos/turnos'},
+      {v: soma(cursos, c => c.vagas), r: 'vagas'},
+      {v: soma(cursos, c => c.inscritos), r: 'inscritos'},
+    ],
+  },
+];
+
+function soma(itens, de){ return itens.reduce((t, i) => t + de(i), 0); }
+
+function pct(parte, todo){
+  if(!todo) return '—';
+  return (100 * parte / todo).toFixed(1).replace('.', ',') + '%';
+}
+
+function numero(valor){
+  return typeof valor === 'number' ? valor.toLocaleString('pt-BR') : valor;
+}
+
+async function carrega(caminho){
+  const urls = [caminho, BASE_PUBLICADA + caminho];
+  for(const url of urls){
+    try{
+      const resposta = await fetch(url);
+      if(!resposta.ok) continue;
+      const doc = await resposta.json();
+      if(Array.isArray(doc.cursos) && doc.cursos.length){
+        return {cursos: doc.cursos, publicada: url !== caminho};
+      }
+    }catch(erro){
+      // Origem indisponível: tenta a próxima. O cartão sobrevive sem números.
+    }
+  }
+  return null;
+}
+
+function pinta(alvo, itens){
+  const caixa = document.getElementById(alvo);
+  caixa.innerHTML = itens.map(i =>
+    '<span class="n ' + (i.classe || '') + '">'
+      + '<b class="v">' + numero(i.v) + '</b>'
+      + '<span class="r">' + i.r + '</span>'
+    + '</span>'
+  ).join('');
+}
+
+function avisaOrigemPublicada(){
+  const nota = document.createElement('p');
+  nota.className = 'origem';
+  nota.innerHTML = 'Página aberta como arquivo local: os números vieram da '
+    + '<a href="' + BASE_PUBLICADA + '">cópia publicada</a>, não do seu clone. '
+    + 'Para ver os dados locais, sirva a pasta por HTTP '
+    + '(<code>python3 -m http.server</code>).';
+  document.querySelector('.site-footer').prepend(nota);
+}
+
+document.getElementById('vApp').textContent = 'v' + APP.versao;
+document.getElementById('vQuando').textContent = 'atualizada em ' + APP.quando;
+
+// Os cartões já estão no HTML, completos e clicáveis, antes de qualquer fetch:
+// se o dado não vier, some o bloco de números e o resto continua de pé.
+Promise.all(EDICOES.map(async edicao => {
+  const dado = await carrega(edicao.caminho);
+  if(!dado){
+    document.getElementById(edicao.alvo).classList.add('falhou');
+    return false;
+  }
+  pinta(edicao.alvo, edicao.resume(dado.cursos));
+  return dado.publicada;
+})).then(origens => {
+  if(origens.some(Boolean)) avisaOrigemPublicada();
+});
+</script>
+</body>
+</html>
