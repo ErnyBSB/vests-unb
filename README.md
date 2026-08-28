@@ -129,6 +129,7 @@ O que já existe:
   conferidos contra o que o explorador publica hoje;
 * **extração do Anexo I do edital de 2027** — 105 cursos, conferida contra os totais
   impressos no próprio edital;
+* **página inicial** listando as edições, com os números de cada uma lidos de `dados/`;
 * publicação automática: todo push em `main` redeploya o site.
 
 O que ainda não existe:
@@ -379,6 +380,7 @@ produtos/<ano>/           Os aplicativos HTML, um por edição
   2027/
     explorador-vagas-unb-2027.html          Vagas: quantas, e em qual sistema
 images/                   Imagens do repositório
+index.html                A página inicial do site — lista as edições disponíveis
 LICENSE                   The Unlicense — domínio público
 ```
 
@@ -583,18 +585,25 @@ Para uso offline de verdade, sirva a pasta por HTTP — um comando, descrito em
 ## Publicação
 
 O site é servido pelo **GitHub Pages** a partir de `main`, na raiz, com o build clássico
-do Jekyll — é ele que transforma este README na página inicial. Todo push em `main`
-redeploya automaticamente.
+do Jekyll. Todo push em `main` redeploya automaticamente.
 
 | | |
 |---|---|
 | Site | <https://ernybsb.github.io/vests-unb/> |
+| Explorador 2027 | <https://ernybsb.github.io/vests-unb/produtos/2027/explorador-vagas-unb-2027.html> |
 | Explorador 2026 | <https://ernybsb.github.io/vests-unb/produtos/2026/explorador-concorrencia-unb-2026.html> |
 
-O HTML do explorador não usa a sintaxe de template do Liquid — chaves duplas ou
+A raiz do site é o **`index.html`**, não este README. Enquanto não havia página inicial,
+o Jekyll renderizava o README na entrada do site — e quem chegava procurando o aplicativo
+caía em documentação de extração e modelo de dados. Com o `index.html` na raiz, o Pages
+passa a servi-lo, e a divisão fica na altura certa: **o README é para quem desenvolve, no
+GitHub; a página inicial é para quem vai usar, no Pages.**
+
+Nenhum HTML do projeto usa a sintaxe de template do Liquid — chaves duplas ou
 chaves-porcento —, então o Jekyll não interfere no JavaScript. Um produto futuro que use
-essa sintaxe precisará ser protegido, ou o Jekyll desligado com um `.nojekyll`, ao custo
-de o README deixar de virar página inicial.
+essa sintaxe precisará ser protegido, ou o Jekyll desligado com um `.nojekyll`. Desligá-lo
+**não custa mais nada**: o que se perderia era justamente o README virar página inicial, e
+isso já não acontece.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -614,7 +623,7 @@ de o README deixar de virar página inicial.
 - [x] Explorador de vagas de 2027 — composição das vagas por sistema de ingresso
     - [x] Anexo I também em JSON, no formato que 2026 já usa
     - [x] O aplicativo
-- [ ] Página inicial listando as edições disponíveis
+- [x] Página inicial listando as edições disponíveis
 - [ ] Séries históricas — a mesma leitura para edições anteriores, e a variação entre elas
 - [ ] Comparador de cursos lado a lado
 - [x] **Zero dependências de terceiros** — o explorador não busca nada fora do projeto
